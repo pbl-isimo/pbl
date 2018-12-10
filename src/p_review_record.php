@@ -6,6 +6,5 @@ echo 'コメント<br>
 <textarea name="kanso" rows="20" cols="80"></textarea><br>
 <input type="submit" value="登録">
 ';
-echo 'text'
 ?>
 </form>
