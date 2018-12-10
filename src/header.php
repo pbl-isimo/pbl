@@ -16,7 +16,7 @@ if (isset ( $_SESSION ['uid_kind'] )) {
 			' 店舗情報参照画面 ' => 'p_shop_reference',
 			' トップページ ' => 'p_top'
 	);
-	echo '<a href="?do=p_top">ぴたてん(トップページ)</a>　　';
+	//echo '<a href="?do=p_top">ぴたてん(トップページ)</a>　　';
 	if ($_SESSION ['uid_kind'] == 1) { // 社員
 		echo '<a href="">ユーザ情報編集画面</a>　　';
 		echo '<a href="?do=p_shop_record">店舗登録</a>　　';
