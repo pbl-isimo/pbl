@@ -22,11 +22,30 @@ $(document).ready(function(){
 	</head>
 	<select id="sel">
 		<option value="" selected>絞り込み</option>
-		<option value="?do=ur_add">営業日</option>
-		<option value="?do=p_shop_record">予算</option>
-		<option value="?do=sys_logout">距離</option>
+		
 	</select> <input type="submit" name="btng" value="検索"> <input
 		type="hidden" name="hl" value="ja">
+<font size="3">営業日</font>
+<input type="checkbox" name="course" value="html">月
+<input type="checkbox" name="course" value="ruby">火
+<input type="checkbox" name="course" value="php">水
+<input type="checkbox" name="course" value="seo">木
+<input type="checkbox" name="course" value="others">金
+<input type="checkbox" name="course" value="php">土
+<input type="checkbox" name="course" value="seo">日
+<input type="checkbox" name="course" value="others">祝日
+<br>
+<font size="3">予算</font>
+<input type="checkbox" name="course" value="html">～500
+<input type="checkbox" name="course" value="ruby">～700
+<input type="checkbox" name="course" value="php">～1000
+<input type="checkbox" name="course" value="seo">それ以上
+<br>
+<font size="3">距離</font>
+<input type="checkbox" name="course" value="html">～10分
+<input type="checkbox" name="course" value="ruby">～20分
+<input type="checkbox" name="course" value="php">～30分
+<input type="checkbox" name="course" value="seo">それ以上
 </form>
 <br>
 <br>
