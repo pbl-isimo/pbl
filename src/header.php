@@ -42,11 +42,11 @@ if (isset ( $_SESSION ['uid_kind'] )) {
 	);
 	//echo '<a href="?do=p_top">ぴたてん(トップページ)</a>　　';
 	if ($_SESSION ['uid_kind'] == 1) { // 社員
-		echo '<a href="">ユーザ情報編集画面</a>　　';
+	//	echo '<a href="">ユーザ情報編集画面</a>　　';
 		echo '<a href="?do=p_shop_record">店舗登録</a>　　';
 	}
 	if ($_SESSION ['uid_kind'] == 2) { // ゲスト
-		echo '<a href="?do=qs_subject2">担当科目</a>&nbsp;';
+		echo '<a href="?do=qs_subject2">ゲストログイン</a>&nbsp;';
 	}
 	if ($_SESSION ['uid_kind'] == 0) { // 管理者
 		foreach ( $menu as $label => $action ) {

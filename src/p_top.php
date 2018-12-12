@@ -1,16 +1,5 @@
-<h2>ぴたてん</h2>
-どれも途中なので、動かないこと前提です
-<br>
-ログインは動作的にはOKっぽい
-<br>
-写真の紐付け保存、写真のアップロード機能は難しい様なので
-<br>
-それ以外が完成してからというのはどうでしょう？
-<br>
-<br>
-おすすめは最後の方で...
-<br>
-<br>
+﻿<body bgcolor="#FFDBC9">
+
 ここは
 <a href="?do=p_top">【トップページ】</a>
 です。
@@ -32,15 +21,38 @@ $(document).ready(function(){
 </script>
 	</head>
 	<select id="sel">
-		<option value="" selected>設定</option>
-		<option value="?do=ur_add">ユーザ情報編集</option>
-		<option value="?do=p_shop_record">店舗登録</option>
-		<option value="?do=sys_logout">ログアウト</option>
+		<option value="" selected>絞り込み</option>
+		<option value="?do=ur_add">営業日</option>
+		<option value="?do=p_shop_record">予算</option>
+		<option value="?do=sys_logout">距離</option>
 	</select> <input type="submit" name="btng" value="検索"> <input
 		type="hidden" name="hl" value="ja">
 </form>
 <br>
 <br>
+<script>
+$(document).ready(function(){
+	  $("#sel").change(function(){
+	    //var str = $(this).val();
+	    window.location.href = $(this).val();
+	    //alert(str);
+	  });
+	});
+</script>
+	</head>
+	<select id="sel">
+		<option value="" selected>評価が高い</option>
+		<option value="?do=ur_add">評価が低い</option>
+		<option value="?do=p_shop_record">距離が近い</option>
+		<option value="?do=sys_logout">距離が遠い</option>
+		<option value="?do=sys_logout">予算が少ない</option>
+		<option value="?do=sys_logout">予算が多い</option>
+	</select>
+	 <input type="hidden" name="hl" value="ja">
+</form>
+<br>
+<br>
+<tr>
 <?php
 require_once ('src/db_inc.php');
 //phpinfo();
@@ -76,6 +88,8 @@ var_dump ( $row2 );*/
 	echo '予算：' . $row ['budget'] . '～<br><br><br>';
 }
 ?>
+</tr>
+<div align="left">
 <br>
 <br>
 <a href="?do=sys_login">ログイン画面</a>
@@ -114,4 +128,5 @@ var_dump ( $row2 );*/
 <a href="?do=p_menu_refer">メニュー参照</a>
 <br>
 <br>
-
+</div>
+</body>
