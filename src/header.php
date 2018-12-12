@@ -1,6 +1,30 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <meta http-equiv="Content-TYPE" content="text/html; charset=UTF-8">
+<style>
+body{
+text-align: center;
+}
+div#center {
+width: 600px;
+height: 90px;
+text-align: left;
+background: #FF9933;
+margin: auto;
+}
+h1 {
+text-align: center;
+}
+・・・省略・・・
+</style>
+</head>
+<body>
+<div id="center">
+<a href="p_index.php">
+<img src="img/pitarogo.png"width="150"height="100"></a>
+</div>
+</body>
+
 <?php
 require_once ('src/db_inc.php');
 if (isset ( $_SESSION ['uid_kind'] )) {
