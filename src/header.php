@@ -6,8 +6,8 @@ body{
 text-align: center;
 }
 div#center {
-width: 600px;
-height: 90px;
+width: 1500px;
+height: 180px;
 text-align: left;
 background: #FF9933;
 margin: auto;
@@ -21,7 +21,7 @@ text-align: center;
 <body>
 <div id="center">
 <a href="p_index.php">
-<img src="img/pitarogo.png"width="150"height="100"></a>
+<img src="img/pitarogo.png"width="300"height="200"></a>
 </div>
 </body>
 
