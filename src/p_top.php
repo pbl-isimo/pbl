@@ -21,34 +21,36 @@ $(document).ready(function(){
 </script>
 	</head>
 	<select id="sel">
-		<option value="" selected>絞り込み</option>
-		
-	</select> <input type="submit" name="btng" value="検索"> <input
-		type="hidden" name="hl" value="ja">
-<font size="3">営業日</font>
-<input type="checkbox" name="course" value="html">月
-<input type="checkbox" name="course" value="ruby">火
-<input type="checkbox" name="course" value="php">水
-<input type="checkbox" name="course" value="seo">木
-<input type="checkbox" name="course" value="others">金
-<input type="checkbox" name="course" value="php">土
-<input type="checkbox" name="course" value="seo">日
-<input type="checkbox" name="course" value="others">祝日
+    <option value="" selected>絞り込み</option>
+    <option value="?do=ur_add">営業日</option>
+	<option value="?do=p_shop_record">予算</option>
+	<option value="?do=sys_logout">距離</option>
+	</select> <input type="submit" name="btng" value="検索"> <br>
+	<font size="3">営業日&nbsp</font>
+月<input type="checkbox" name="course" value="getu">&nbsp
+火<input type="checkbox" name="course" value="ka">&nbsp
+水<input type="checkbox" name="course" value="sui">&nbsp
+木<input type="checkbox" name="course" value="moku">&nbsp
+金<input type="checkbox" name="course" value="kin">&nbsp
+土<input type="checkbox" name="course" value="do">&nbsp
+日<input type="checkbox" name="course" value="niti">&nbsp
+祝日<input type="checkbox" name="course" value="others youbi">
 <br>
-<font size="3">予算</font>
-<input type="checkbox" name="course" value="html">～500
-<input type="checkbox" name="course" value="ruby">～700
-<input type="checkbox" name="course" value="php">～1000
-<input type="checkbox" name="course" value="seo">それ以上
+<font size="3">予算&nbsp</font>
+～500<input type="checkbox" name="course" value="-500">&nbsp
+～700<input type="checkbox" name="course" value="-700">&nbsp
+～1000<input type="checkbox" name="course" value="-1000">&nbsp
+それ以上<input type="checkbox" name="course" value="others yosan">
 <br>
-<font size="3">距離</font>
-<input type="checkbox" name="course" value="html">～10分
-<input type="checkbox" name="course" value="ruby">～20分
-<input type="checkbox" name="course" value="php">～30分
-<input type="checkbox" name="course" value="seo">それ以上
+<font size="3">距離&nbsp</font>
+～10分<input type="checkbox" name="course" value="-10m">&nbsp
+～20分<input type="checkbox" name="course" value="-20m">&nbsp
+～30分<input type="checkbox" name="course" value="-30m">&nbsp
+それ以上<input type="checkbox" name="course" value="others kyori">
 </form>
 <br>
 <br>
+
 <script>
 $(document).ready(function(){
 	  $("#sel").change(function(){
