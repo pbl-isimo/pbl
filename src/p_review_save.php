@@ -24,11 +24,21 @@ if (!$code) {
 $kanso = $_REQUEST['kanso'];
 
 
+print('<p>データを追加します。</p>');
+
+$sql = "INSERT INTO tb_review (comment) VALUES ('$kanso')";
+$result_flag = mysql_query($sql);
+
+if (!$result_flag) {
+	die('INSERTクエリーが失敗しました。'.mysql_error());
+}
+
+/*
 $result = mysql_query("SELECT * FROM `tb_review` VALUES('$kanso')", $conn);
 if (!$result) {
   die('データを登録できませんでした。');
 }
-
+*/
 $cnon = mysql_close($conn);
 if (!$conn) {
   die('データベースとの接続を閉じられませんでした。');
