@@ -1,5 +1,4 @@
 ﻿<body bgcolor="#FFDBC9">
-
 ここは
 <a href="?do=p_top">【トップページ】</a>
 です。
@@ -20,12 +19,9 @@ $(document).ready(function(){
 	});
 </script>
 	</head>
-	<select id="sel">
-    <option value="" selected>絞り込み</option>
-    <option value="?do=ur_add">営業日</option>
-	<option value="?do=p_shop_record">予算</option>
-	<option value="?do=sys_logout">距離</option>
-	</select> <input type="submit" name="btng" value="検索"> <br>
+<input type="submit" name="btng" value="検索"> <br>
+<center>
+<option value="" selected>絞り込み ▼</option>
 	<div style="padding: 10px; margin-bottom: 10px;
  width: 450px; height: 70px;
  border:1px solid #333333;   border-radius: 10px;
@@ -71,9 +67,7 @@ $(document).ready(function(){
 	</head>
 	<select id="sel">
 		<option value="high hyouka" selected>評価が高い</option>
-		<option value="low hyouka">評価が低い</option>
-		<option value="short kyori">距離が近い</option>
-		<option value="long kyori">距離が遠い</option>
+		<option value="short time">所要時間が短い</option>
 		<option value="few yosan">予算が少ない</option>
 		<option value="many yosan">予算が多い</option>
 	</select>
@@ -117,7 +111,12 @@ var_dump ( $row2 );*/
 	echo '予算：' . $row ['budget'] . '～<br><br><br>';
 }
 ?>
+</center>
+</div>
 </tr>
+
+</body>
+
 <div align="left">
 <br>
 <br>
