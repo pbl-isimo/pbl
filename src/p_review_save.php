@@ -7,14 +7,14 @@ if (!$conn) {
   die('データベースに接続できませんでした。');
 }
 
-print('<p>接続に成功しました。</p>');
+//print('<p>接続に成功しました。</p>');
 
 $db_selected = mysql_select_db('pbl', $conn);
 if (!$db_selected) {
   die('データベースを選択できませんでした。');
 }
 
-print('<p>pblデータベースを選択しました。</p>');
+//print('<p>pblデータベースを選択しました。</p>');
 
 $code = mysql_query('SET NAMES utf8', $conn);
 if (!$code) {
@@ -22,11 +22,12 @@ if (!$code) {
 }
 
 $kanso = $_REQUEST['kanso'];
+$rpoint = $_REQUEST['rpoint'];
 
 
-print('<p>データを追加します。</p>');
+//print('<p>データを追加します。</p>');
 
-$sql = "INSERT INTO tb_review (comment) VALUES ('$kanso')";
+$sql = "INSERT INTO tb_review (comment, rpoint) VALUES ('$kanso','$rpoint')";
 $result_flag = mysql_query($sql);
 
 if (!$result_flag) {
