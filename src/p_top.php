@@ -26,28 +26,32 @@ $(document).ready(function(){
 	<option value="?do=p_shop_record">予算</option>
 	<option value="?do=sys_logout">距離</option>
 	</select> <input type="submit" name="btng" value="検索"> <br>
+	<div body="text-align: center;">
 	<font size="3">営業日&nbsp</font>
-月<input type="checkbox" name="course" value="getu">&nbsp
-火<input type="checkbox" name="course" value="ka">&nbsp
-水<input type="checkbox" name="course" value="sui">&nbsp
-木<input type="checkbox" name="course" value="moku">&nbsp
-金<input type="checkbox" name="course" value="kin">&nbsp
-土<input type="checkbox" name="course" value="do">&nbsp
-日<input type="checkbox" name="course" value="niti">&nbsp
-祝日<input type="checkbox" name="course" value="others youbi">
+月<input type="checkbox" name="holiday" value="getu">&nbsp
+火<input type="checkbox" name="holiday" value="ka">&nbsp
+水<input type="checkbox" name="holiday" value="sui">&nbsp
+木<input type="checkbox" name="holiday" value="moku">&nbsp
+金<input type="checkbox" name="holiday" value="kin">&nbsp
+土<input type="checkbox" name="holiday" value="do">&nbsp
+日<input type="checkbox" name="holiday" value="niti">&nbsp
+祝<input type="checkbox" name="holiday" value="others youbi">
 <br>
 <font size="3">予算&nbsp</font>
-～500<input type="checkbox" name="course" value="-500">&nbsp
-～700<input type="checkbox" name="course" value="-700">&nbsp
-～1000<input type="checkbox" name="course" value="-1000">&nbsp
-それ以上<input type="checkbox" name="course" value="others yosan">
+～500<input type="radio" name="budget" value="-500">&nbsp
+～700<input type="radio" name="budget" value="-700">&nbsp
+～1000<input type="radio" name="budget" value="-1000">&nbsp
+それ以上<input type="radio" name="budget" value="others yosan">
 <br>
 <font size="3">距離&nbsp</font>
-～10分<input type="checkbox" name="course" value="-10m">&nbsp
-～20分<input type="checkbox" name="course" value="-20m">&nbsp
-～30分<input type="checkbox" name="course" value="-30m">&nbsp
-それ以上<input type="checkbox" name="course" value="others kyori">
+～10分<input type="radio" name="time" value="-10m">&nbsp
+～20分<input type="radio" name="time" value="-20m">&nbsp
+～30分<input type="radio" name="time" value="-30m">&nbsp
+それ以上<input type="radio" name="time" value="others kyori">
 </form>
+<br>
+</body>
+</div>
 <br>
 <br>
 
