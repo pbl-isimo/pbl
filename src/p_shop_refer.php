@@ -29,7 +29,7 @@ while ($row) {
 
 	echo '<table border=1>';
 	//echo '<tr>';
-	//echo '<tr><td>' .'店舗名'.'</td><td>'. $row['sname'] . '</td></tr>'; // ユーザ種別コードを名称に変換（連想配列利用）
+	//echo '<tr><td>' .'店舗名'.'</td><td>'. $row['comment'] . '</td></tr>'; // ユーザ種別コードを名称に変換（連想配列利用）
 	echo '<tr><td>' .'営業時間'.'</td><td>'. $row['open'] . '～'.$row['close'].'</td></tr>';
 	echo '<tr><td>' .'住所'.'</td><td>'. $row['address'] . '</td></tr>';
 	echo '<tr><td>' .'定休日'.'</td><td>'. $row['holiday'] . '</td></tr>';
@@ -40,14 +40,36 @@ while ($row) {
 	//echo '</tr>';
 	//$n++;
 
-
-
 echo '</table>';
+echo '<br>';
 
-echo'<h2>メニュー</h2>';
+//echo'<h2>メニュー</h2>';
+
+$sql2="SELECT sid,item,price,mcontents From tb_menu Natural Join tb_shop WHERE sname='$sname'";
+$rs2 = mysql_query($sql2, $conn);
+
+$row = mysql_fetch_array($rs2);
+//$num=mysql_num_rows( $rs2 );
+
+if (!$rs2) die ('エラー: ' . mysql_error());
+echo '<table border=1>';
+echo "<tr><th>メニュー</th></tr>";
+while($row){
+	$_SESSION['sid']   = $row['sid'];
+
+	echo '<tr><td>' .$row['item'].'</td><td>'. $row['price']."円".'</td><td>'.$row['mcontents'].'</td></tr>';
+
+	$row = mysql_fetch_array($rs2) ;
+}
+echo '</table>';
 
 echo '<h2>口コミ</h2>';
 
+$sql3="SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left join tb_user Natural left join tb_shop WHERE sname='$sname'";
+$rs3 = mysql_query($sql3, $conn);
+//if (!$rs) die ('エラー: ' . mysql_error());
+$row = mysql_fetch_array($rs3);
+while($row){
 	echo '<b>'.$row['uname'].'</b>';
 	for($i=0;$i<5;$i++){
 		if($i<$row ['rpoint']){
@@ -57,12 +79,21 @@ echo '<h2>口コミ</h2>';
 		}
 	}
 
-	echo '<br>'.$row['comment'];
+	echo '<br>'.$row['comment']."<br>";
 	//echo '<br><a href="?do=p_review_detail&uid">もっと見る</a>';
 
+	$row = mysql_fetch_array($rs3);
+}
 	$row = mysql_fetch_array($rs);
 
 }
+
+
+
+
+
+
+
 
 
 echo '
