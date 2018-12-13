@@ -4,30 +4,34 @@ require_once ('src/db_inc.php');
 $conn = mysql_connect("localhost","root","");//開発環境
 mysql_select_db("pbl", $conn);
 if (!$conn) {
-  exit('データベースに接続できませんでした。');
+  die('データベースに接続できませんでした。');
 }
 
-$result = mysql_select_db('tb_review', $conn);
-if (!$result) {
-  exit('データベースを選択できませんでした。');
+print('<p>接続に成功しました。</p>');
+
+$db_selected = mysql_select_db('pbl', $conn);
+if (!$db_selected) {
+  die('データベースを選択できませんでした。');
 }
 
-$result = mysql_query('SET NAMES utf8', $conn);
-if (!$result) {
-  exit('文字コードを指定できませんでした。');
+print('<p>pblデータベースを選択しました。</p>');
+
+$code = mysql_query('SET NAMES utf8', $conn);
+if (!$code) {
+  die('文字コードを指定できませんでした。');
 }
 
 $kanso = $_REQUEST['kanso'];
 
 
-$result = mysql_query("INSERT INTO address(kanso) VALUES('$kanso')", $conn);
+$result = mysql_query("SELECT * FROM `tb_review` VALUES('$kanso')", $conn);
 if (!$result) {
-  exit('データを登録できませんでした。');
+  die('データを登録できませんでした。');
 }
 
 $cnon = mysql_close($conn);
 if (!$conn) {
-  exit('データベースとの接続を閉じられませんでした。');
+  die('データベースとの接続を閉じられませんでした。');
 }
 
 ?>
