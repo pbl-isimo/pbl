@@ -2,16 +2,17 @@
 <?php
 require_once ('src/db_inc.php');
 $conn = mysql_connect("localhost","root","");//開発環境
-if (!$con) {
+mysql_select_db("pbl", $conn);
+if (!$conn) {
   exit('データベースに接続できませんでした。');
 }
 
-$result = mysql_select_db('tb_review', $con);
+$result = mysql_select_db('tb_review', $conn);
 if (!$result) {
   exit('データベースを選択できませんでした。');
 }
 
-$result = mysql_query('SET NAMES utf8', $con);
+$result = mysql_query('SET NAMES utf8', $conn);
 if (!$result) {
   exit('文字コードを指定できませんでした。');
 }
@@ -19,17 +20,18 @@ if (!$result) {
 $kanso = $_REQUEST['kanso'];
 
 
-$result = mysql_query("INSERT INTO address(kanso) VALUES('$kanso')", $con);
+$result = mysql_query("INSERT INTO address(kanso) VALUES('$kanso')", $conn);
 if (!$result) {
   exit('データを登録できませんでした。');
 }
 
-$con = mysql_close($con);
-if (!$con) {
+$cnon = mysql_close($conn);
+if (!$conn) {
   exit('データベースとの接続を閉じられませんでした。');
 }
 
 ?>
 <p>登録が完了しました。<br /><a href="p_review_detail.php">戻る</a></p>
 </body>
+</form>
 </html>
