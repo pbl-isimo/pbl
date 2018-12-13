@@ -23,6 +23,8 @@ for($i=0;$i<5;$i++){
 	}
 }
 '</h1>';
+
+echo '<input type="button" value="店舗情報を編集する" >';
 while ($row) {
 	//$r  = $row['urole'];// ユーザ種別コード取得（数字）
 	$_SESSION['sid']   = $row['sid'];
@@ -57,13 +59,17 @@ echo "<tr><th>メニュー</th></tr>";
 while($row){
 	$_SESSION['sid']   = $row['sid'];
 
-	echo '<tr><td>' .$row['item'].'</td><td>'. $row['price']."円".'</td><td>'.$row['mcontents'].'</td></tr>';
+	echo '<tr><td>' .$row['item'].'</td><td>'. $row['price']."円".'</td><td>'.$row['mcontents'].'</td>
+		<td><a href="?do=p_menu_edit&sname=' . $_GET ['sname'] . '">編集</a></td>
+		<td><a href="?do=p_menu_delete&sname='.$sname.'">削除</a></td></tr>';
 
 	$row = mysql_fetch_array($rs2) ;
 }
 echo '</table>';
 
-echo '<h2>口コミ</h2>';
+echo '<input type="button" value="メニュー追加" >';
+
+echo '<h2>口コミ<input type="button" value="口コミ投稿" ></h2>';
 
 $sql3="SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left join tb_user Natural left join tb_shop WHERE sname='$sname'";
 $rs3 = mysql_query($sql3, $conn);
@@ -79,8 +85,8 @@ while($row){
 		}
 	}
 
-	echo '<br>'.$row['comment']."<br>";
-	//echo '<br><a href="?do=p_review_detail&uid">もっと見る</a>';
+	echo '<br>'.$row['comment'];
+	echo '<br><a href="?do=p_review_detail&uid">もっと見る</a>';
 
 	$row = mysql_fetch_array($rs3);
 }
@@ -97,6 +103,7 @@ while($row){
 
 
 echo '
+<br>
 <br>
 <a href="?do=p_review_record">口コミ編集</a>
 <br>
