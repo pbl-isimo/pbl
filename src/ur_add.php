@@ -27,27 +27,31 @@ if (isset ( $_GET ['uid'] )) { // 既存アカウントの編集かを調べる
 ?>
 <h2>ユーザ編集</h2>
 <form action="?do=ur_save" method="post">
-	<table>
+	<center><table>
 		<tr>
 			<td>アカウント名変更</td>
-			<td><input type="text" name="uname" value="<?php echo $uname;?>"
-			style="position: absolute; left: 36%; top: 69%"></td>
 		</tr>
-	</table>
+		<tr>
+			<td><input type="text" name="uname" value="<?php echo $uname;?>">
+			</td>
+		</tr>
+	</table></center>
 	<h2>パスワードの変更</h2>
-	<table>
+	<center><table>
 		<tr>
 			<td>現在のパスワード</td>
-			<td><input type="password" name="pass0"></td>
+			<td><input type="password" name="pass0"
+			></td>
 		</tr>
 		<tr>
 			<td>新しいパスワード</td>
-			<td><input type="password" name="pass1"></td>
+			<td><input type="password" name="pass1"
+			></td>
 		</tr>
 		<tr>
 			<td>新しいパスワード（再入力）</td>
 			<td><input type="password" name="pass2"></td>
 		</tr>
-	</table>
+	</table></center>
 	<input type="submit" value="登録">
 </form>
