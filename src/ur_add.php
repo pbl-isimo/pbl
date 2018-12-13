@@ -20,7 +20,6 @@ if (isset ( $_GET ['uid'] )) { // 既存アカウントの編集かを調べる
 		die ( 'エラー: ' . mysql_error () );
 	$row = mysql_fetch_array ( $rs );
 	if ($row) { // 既存アカウントを編集するために、変数に代入
-		$act = 'update';
 		$uname = $row ['uname'];
 		$pasword = $row['psword'];
 	}
@@ -31,14 +30,15 @@ if (isset ( $_GET ['uid'] )) { // 既存アカウントの編集かを調べる
 	<table>
 		<tr>
 			<td>アカウント名変更</td>
-			<td><input type="text" name="uid" value="<?php echo $uname;?>"></td>
+			<td><input type="text" name="uname" value="<?php echo $uname;?>"
+			style="position: absolute; left: 36%; top: 69%"></td>
 		</tr>
 	</table>
 	<h2>パスワードの変更</h2>
 	<table>
 		<tr>
 			<td>現在のパスワード</td>
-			<td><input type="text" name="pass0"></td>
+			<td><input type="password" name="pass0"></td>
 		</tr>
 		<tr>
 			<td>新しいパスワード</td>
