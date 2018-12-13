@@ -62,12 +62,12 @@ $(document).ready(function(){
 </script>
 	</head>
 	<select id="sel">
-		<option value="" selected>評価が高い</option>
-		<option value="?do=ur_add">評価が低い</option>
-		<option value="?do=p_shop_record">距離が近い</option>
-		<option value="?do=sys_logout">距離が遠い</option>
-		<option value="?do=sys_logout">予算が少ない</option>
-		<option value="?do=sys_logout">予算が多い</option>
+		<option value="high hyouka" selected>評価が高い</option>
+		<option value="low hyouka">評価が低い</option>
+		<option value="short kyori">距離が近い</option>
+		<option value="long kyori">距離が遠い</option>
+		<option value="few yosan">予算が少ない</option>
+		<option value="many yosan">予算が多い</option>
 	</select>
 	 <input type="hidden" name="hl" value="ja">
 </form>
