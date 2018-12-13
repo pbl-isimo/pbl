@@ -26,8 +26,12 @@ $(document).ready(function(){
 	<option value="?do=p_shop_record">予算</option>
 	<option value="?do=sys_logout">距離</option>
 	</select> <input type="submit" name="btng" value="検索"> <br>
-	<div body="text-align: center;">
-	<font size="3">営業日&nbsp</font>
+	<div style="padding: 10px; margin-bottom: 10px;
+ width: 450px; height: 70px;
+ border:1px solid #333333;   border-radius: 10px;
+  background-color: #FFFFFF;">
+<div body="text-align: center;">
+<font size="3">営業日&nbsp</font>
 月<input type="checkbox" name="holiday" value="getu">&nbsp
 火<input type="checkbox" name="holiday" value="ka">&nbsp
 水<input type="checkbox" name="holiday" value="sui">&nbsp
