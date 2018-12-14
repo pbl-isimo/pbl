@@ -30,6 +30,39 @@ while ($row) {
 	$_SESSION['sid']   = $row['sid'];
 
 	echo '<table border=1>';
+<?php
+
+require_once ('db_inc.php');
+$sname=$_GET['sname'];
+
+
+
+$sql="SELECT sid,sname,address,open,close,time,budget,holiday,uid,rpoint,rid,comment,pid,uname
+		From tb_shop natural left join tb_review natural left join tb_user
+		WHERE sname='$sname'";
+$rs = mysql_query($sql, $conn);
+if (!$rs) die ('エラー: ' . mysql_error());
+
+
+
+$row = mysql_fetch_array($rs) ;
+echo '<h1>'.$sname;
+for($i=0;$i<5;$i++){
+	if($i<$row ['rpoint']){
+		echo '★';
+	}else{
+		echo '☆';
+	}
+}
+'</h1>';
+
+echo '<input type="button" value="店舗情報を編集する" >';
+echo '<a href="?do=p_shop_delete&sname='.$sname.'">店舗情報の削除</a>';
+while ($row) {
+	//$r  = $row['urole'];// ユーザ種別コード取得（数字）
+	$_SESSION['sid']   = $row['sid'];
+
+	echo '<table border=1>';
 	//echo '<tr>';
 	//echo '<tr><td>' .'店舗名'.'</td><td>'. $row['comment'] . '</td></tr>'; // ユーザ種別コードを名称に変換（連想配列利用）
 	echo '<tr><td>' .'営業時間'.'</td><td>'. $row['open'] . '～'.$row['close'].'</td></tr>';
@@ -43,7 +76,9 @@ while ($row) {
 	//$n++;
 
 echo '</table>';
+
 echo '<br>';
+
 
 //echo'<h2>メニュー</h2>';
 
@@ -61,7 +96,7 @@ while($row){
 
 	echo '<tr><td>' .$row['item'].'</td><td>'. $row['price']."円".'</td><td>'.$row['mcontents'].'</td>
 		<td><a href="?do=p_menu_edit&sname=' . $_GET ['sname'] . '">編集</a></td>
-		<td><a href="?do=p_menu_delete&sname='.$sname.'">削除</a></td></tr>';
+		<td><a href="?do=p_menu_delete&sname='.$_GET['sname'].'">削除</a></td></tr>';
 
 	$row = mysql_fetch_array($rs2) ;
 }
