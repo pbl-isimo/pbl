@@ -34,7 +34,8 @@ if ($sname == "") {
 } else if ($address == "") {
 	echo "住所が入力されていません";
 } else {
-	$sql1 = "INSERT INTO tb_shop VALUES ('$sname',$sid,'$address','$open','$close',$time,$budget,'$holiday','$uid')";
+	$sql1 = "INSERT INTO tb_shop (sname,sid,address,open,close,time,budget,holiday,uid )
+	VALUES ('$sname',$sid,'$address','$open','$close','$time','$budget','$holiday','$uid')";
 
 	// $sql = "UPDATE tb_shop SET sname='$sname',address='$address',open='$open',close ='$close',time ='$time',budget='$budget',holiday='$holiday',uid ='$uid' WHERE sid ='{$sid}'";
 	mysql_query ( $sql1 );
