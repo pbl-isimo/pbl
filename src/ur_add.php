@@ -1,16 +1,13 @@
 <?php
 require_once ('src/db_inc.php');
-// $roles = array(1=>'学生', 2=>'教員', 9=>'管理者');
-$uname = $_SESSION ['uname'];
+$uid = $_SESSION ['uid'];
 $sql = "
 SELECT uname
 FROM tb_user
-WHERE uname='$uname'";
-$rs = mysql_query ( $sql, $conn );
-$row = mysql_fetch_array ( $rs );
-// $uid = $uname = '';
-// $urole = 1;
-// $act = 'insert';// 新規登録で変数を初期化
+WHERE uid='$uid'";
+$rs = mysql_query ( $sql );
+$uname0 = mysql_fetch_assoc ( $rs );
+
 if (isset ( $_GET ['uid'] )) { // 既存アカウントの編集かを調べる
                           // $uid = $_GET['uid'] ;
 	$sql = "SELECT * FROM tb_user WHERE uid='{$uid}'";
@@ -32,7 +29,7 @@ if (isset ( $_GET ['uid'] )) { // 既存アカウントの編集かを調べる
 			<td>アカウント名変更</td>
 		</tr>
 		<tr>
-			<td><input type="text" name="uname" value="<?php echo $uname;?>">
+			<td><input type="text" name="uname" value="<?php echo $uname0['uname'];?>">
 			</td>
 		</tr>
 	</table></center>
