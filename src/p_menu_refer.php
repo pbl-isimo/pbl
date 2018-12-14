@@ -1,21 +1,15 @@
 <?php
-$sname=$_GET ['sname'];
-echo '<h1>'.$sname.'</h1>';
-?>
+//html
+$sname = $_GET ['sname'];
+$sid=$_GET ['sid'];
+echo '<h1>' . $sname . '</h1>';
+echo '
 <h2>メニュー登録</h2>
-<form>
-メニュー名　<input type="text" name="name" size="20" maxlength="10"><br>
-値段　　　　<input type="text" name="price" size="20" maxlength="10">円<br>
-説明　　　　<textarea name="kanso" rows="4" cols="40"></textarea><br>
-<?php
-require_once ('db_inc.php');
-$uid = $_SESSION ['uid'];
-//echo $uid;
-/*
-$sql="INSERT INTO tb_shop VALUES (,'',,);";
-$rs = mysql_query ( $sql, $conn );
-$row = mysql_fetch_array ( $rs );
-var_dump($row);*/
+<form action="?do=p_menu_post&sname='. $_GET ['sname'] . '&sid='.$_GET ['sid'].'" method="post">
+	メニュー名　 <input type="text" name="name" size="20" maxlength="10" value=""><br>
+	値段　　　　 <input type="text" name="price" size="20" maxlength="10">円<br>
+	説明　　　　 <textarea name="contents" rows="4" cols="40"></textarea>
+	<input type="hidden" name="sid" value="'.$sid.'">
+	<br> <input type="submit" value="登録">
+</form>';
 ?>
-<input type="submit" value="登録">
-</form>
