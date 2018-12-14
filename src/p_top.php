@@ -4,7 +4,7 @@
 です。
 <br>
 <br>
-<form method="get" action="http://www.google.co.jp/search"
+<form method="get" action="http://localhost/PBL3/src/p_search_result.php?do=p_search_result"
 	target="_blank">
 	<input type="text" name="q" size="31" maxlength="255" value="">
 	<head>
