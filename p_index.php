@@ -1,6 +1,3 @@
-<a href="p_index.php">
-<img src="img/pitarogo.png"width="150"height="100"></a>
-
 <?php
 session_start ();
 //include ('css/style.css');

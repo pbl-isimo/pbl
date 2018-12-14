@@ -18,7 +18,6 @@
   $p = $_POST['psword'];
  // echo $u;
  // echo $p;
-  echo "Hello";
 
   $sql = "
   SELECT * FROM tb_user
@@ -27,7 +26,6 @@
   $rs = mysql_query($sql, $conn);
   if (!$rs) die('エラー: ' . mysql_error());
   $row= mysql_fetch_array($rs);
-  var_dump($row);
 
   if ($row){ //ログイン成功
   	//echo "ログイン成功";
@@ -35,7 +33,9 @@
     $_SESSION['uname'] = $row['uname'];
     $_SESSION['uid_kind'] = $row['uid_kind'];
     $_SESSION['login']=1;
-    header('Location:p_index.php');
+    echo '<script> location.replace("p_index.php"); </script>';
+    //header('Location:p_index.php');
+    //exit;
   }else{//ログイン失敗
 	echo "ログイン失敗".'<br>';
 	$_SESSION['login']=2;

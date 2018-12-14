@@ -1,51 +1,37 @@
 <?php
 require_once ('db_inc.php');
+if (isset ( $_POST ['act'] )) {
+	$act = $_POST ['act'];
+	$uid = $_POST ['uid'];
+	$uname = $_POST ['uname'];
+	$type = $_POST ['type'];
 
-$uname0 = $_POST ['uname'];
-$u = $_SESSION ['uid'];
-$people = 0;
-
-$sql = "
-  SELECT uname, psword FROM tb_user
-  WHERE uid= '$u'";
-
-$rs = mysql_query ( $sql );
-$p = mysql_fetch_assoc ( $rs );
-if (! $rs)
-	die ( 'エラー: ' . mysql_error () );
-
-if ($_POST ['uname'] != $p ['uname']) {
-	$sql1 = "
-SELECT COUNT(*) AS people FROM tb_user
-WHERE uname = '$uname0'";
-	$rs1 = mysql_query ( $sql1 );
-	$userp = mysql_fetch_assoc ( $rs1 );
-	$people = $userp['people'];
-}
-
-if ($people >= 1) {
-	echo '<h3>エラー:アカウント名が重複しています</h3>';
-} else if($people == 0) {
-	if ($_POST ['uname'] == "") {
-		echo '<h3>エラー:アカウント名が入力されていません</h3>';
-
-	} else {
-		if ($_POST ['pass0'] != $p ['psword']) {
-			echo '<h3>エラー：現在のパスワードが一致しないので登録できません</h3>';
-//			echo $u['people'];
-		} else {
-			$pass1 = $_POST ['pass1'];
-			$pass2 = $_POST ['pass2'];
-			if ($pass1 == $pass2) {
-				$uname = $_POST ['uname'];
-				$sql2 = "UPDATE tb_user SET uname='$uname',psword='$pass1' WHERE uid='{$u}'";
-				mysql_query ( $sql2);
+	if($act == 'update'){
+		if ($old_ps === $cur_ps){
+			if ($pass1 === $pass2) {
+				$old_ps = $_POST ['old_ps'];
+				$pass1 = $_POST ['new_ps1'];
+				$pass2 = $_POST ['new_ps2'];
+				$sql = "SELECT psword FROM tb_user WHERE uid='{$uid}'";
+				$rs = mysql_query ( $sql, $conn );
+				$row = mysql_fetch_array($rs);
+				$cur_ps = $row['psword'];
+				$sql = "UPDATE tb_user SET uid='{$uid}',uname='{$uname}',psword='{$pass1}',uid_kind='{$type}' WHERE uid='{$uid}'";
+				mysql_query ( $sql, $conn );
 				echo '<h3>アカウントが更新されました</h3>';
 			} else {
 				echo '<h3>エラー：新しいパスワードが一致しないので登録できません</h3>';
 			}
+		}else{
+			echo '<h3>エラー：現在のパスワードが一致しないので登録できません</h3>';
 		}
 	}
-}
 
+	if($act == 'insert'){
+		$pass = $_POST ['new_ps'];
+		$sql = "INSERT INTO tb_user VALUES ('{$uid}','{$pass}',{$type},'{$uname}')";
+		mysql_query ( $sql, $conn );
+		echo '<h3>アカウントが追加されました</h3>';
+	}
+}
 ?>

@@ -1,22 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
+<head>
 <meta http-equiv="Content-TYPE" content="text/html; charset=UTF-8">
-<style>
-body{
-text-align: center;
-}
-div#center {
-width: 1500px;
-height: 180px;
-text-align: left;
-background: #FF9933;
-margin: auto;
-}
-h1 {
-text-align: center;
-}
-・・・省略・・・
-</style>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="./css/style.css">
+<script type="text/javascript" src="./js/script.js"></script>
 </head>
 <body>
 <div id="center">
@@ -30,7 +18,7 @@ require_once ('src/db_inc.php');
 if (isset ( $_SESSION ['uid_kind'] )) {
 
 	$menu = array ( // メニューバーの出力
-			' マスタメンテナンス ' => 'p_master',
+			' マスタメンテナンス ' => 'p_mas',
 			' メニュー登録・編集・削除画面 ' => 'p_menu',
 			' 口コミ情報登録画面 ' => 'p_review_record',
 			' 検索結果表示画面 ' => 'p_search_result',
@@ -69,18 +57,7 @@ if (isset ( $_SESSION ['uid_kind'] )) {
 	//echo '<a href="?do=sys_logout">ログアウト</a>&nbsp;';
 ?>
 <?php
-echo '<head>
-<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script>
-$(document).ready(function(){
-	  $("#sel").change(function(){
-	    //var str = $(this).val();
-	    window.location.href = $(this).val();
-	    //alert(str);
-	  });
-	});
-</script>
-</head>
+echo '
 <select id="sel">
 	<option value="" selected>設定</option>
 	<option value="?do=ur_add">ユーザ情報編集</option>

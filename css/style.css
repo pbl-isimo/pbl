@@ -2,3 +2,16 @@ p {
 	color: orange;
 	font-size: 20px
 }
+body{
+text-align: center;
+}
+div#center {
+width: 1500px;
+height: 180px;
+text-align: left;
+background: #FF9933;
+margin: auto;
+}
+h1 {
+text-align: center;
+}
