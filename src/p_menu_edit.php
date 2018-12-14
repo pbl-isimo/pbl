@@ -11,25 +11,29 @@ $sql = "SELECT * FROM tb_menu
 		natural join tb_shop
 		where sname='$sname'
 		and uid='$uid'";
-// $sql="INSERT INTO tb_shop VALUES (,'',,);";
 $rs = mysql_query ( $sql, $conn );
-//var_dump($row);
-//$row = mysql_fetch_array ( $rs );
-if (!empty($row)) {
+$mid_max=0;
+if (! empty ( $row )) {
 	$num = mysql_num_rows ( $rs );
-
-	echo 'メニュー名　　　　　　　値段　　　　　　　　　　　説明　　　<br>';
+	echo 'メニュー名　　　　　　値段　　　　　　　　　　　説明　　　<br>';
+	echo '<form action="?do=p_menu_move&sname='. $_GET ['sname'] . '&sid='.$_GET ['sid'].'" method="post">';
 	for($j = 1; $j <= $num; $j ++) {
 		$row = mysql_fetch_array ( $rs );
-		echo '<form>
-	 <input type="text" name="name"  size="20" maxlength="10" value="' . $row ['item'] . '">
-	 <input type="text" name="price" size="20" maxlength="10" value="' . $row ['price'] . '">円
-	 <textarea name="contents" rows="1" cols="40">' . $row ['mcontents'] . '</textarea><br>
-	 ';
+	echo $row['mid'];
+	 echo '<input type="text" name="name'.$row['mid'].'"  size="10" maxlength="10" value="' . $row ['item'] . '">
+	 　<input type="text" name="price'.$row['mid'].'" size="10" maxlength="10" value="' . $row ['price'] . '">円
+	 　<textarea name="contents'.$row['mid'].'" rows="1" cols="40">' . $row ['mcontents'] . '</textarea><br>';
+	 if($mid_max<$row['mid']){
+	 	$mid_max=$row['mid'];
+	 }
+	 echo '<input type="hidden" name="mid_max" value="'.$mid_max.'">';
 	}
-	echo '<input type="submit" value="登録">';
-}
-else{
+	echo '<input type="submit" value="編集"></form>';
+} else {
 	echo 'まだ登録がありません';
 }
 ?>
+</form>
+<br>
+<br>
+
