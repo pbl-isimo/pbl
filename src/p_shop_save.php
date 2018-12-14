@@ -16,8 +16,9 @@ $uid = $_SESSION ['uid'];
 //echo $uid;
 
 $sname=$_POST['sname'];
-
-
+//echo $sname;
+$sid = $_SESSION['sid'];
+//echo $sid;
 //$sid=$_POST['sid'];
 $address = $_POST['address'];
 
@@ -36,17 +37,17 @@ if($sname==""){
 	//$sql = "INSERT INTO tb_shop (sname,address,open,close,time,budget,holiday,uid) VALUES
 	//('$sname','$address','$open','$close','$time','$budget','$holiday,'$uid')";
 
-	$sql="INSERT INTO `tb_shop`( `sname`, `address`, `open`, `close`, `time`, `budget`, `holiday`, `uid`)
-		VALUES ('$sname','$address','$open','$close','$time','$budget','$holiday','$uid')";
+	$sql = "UPDATE tb_shop SET sname='$sname',address='$address',open='$open',close ='$close',time ='$time',budget='$budget',holiday='$holiday',uid ='$uid' WHERE sid ='{$sid}'";
+	mysql_query ( $sql);
 	echo '<h3>登録されました</h3>';
 }
 
 
 
-$result_flag = mysql_query($sql);
+//$result_flag = mysql_query($sql);
 
 
-$cnon = mysql_close($conn);
+//$cnon = mysql_close($conn);
 
 
 
