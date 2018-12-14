@@ -25,38 +25,6 @@ for($i=0;$i<5;$i++){
 '</h1>';
 
 echo '<input type="button" value="店舗情報を編集する" >';
-while ($row) {
-	//$r  = $row['urole'];// ユーザ種別コード取得（数字）
-	$_SESSION['sid']   = $row['sid'];
-
-	echo '<table border=1>';
-<?php
-
-require_once ('db_inc.php');
-$sname=$_GET['sname'];
-
-
-
-$sql="SELECT sid,sname,address,open,close,time,budget,holiday,uid,rpoint,rid,comment,pid,uname
-		From tb_shop natural left join tb_review natural left join tb_user
-		WHERE sname='$sname'";
-$rs = mysql_query($sql, $conn);
-if (!$rs) die ('エラー: ' . mysql_error());
-
-
-
-$row = mysql_fetch_array($rs) ;
-echo '<h1>'.$sname;
-for($i=0;$i<5;$i++){
-	if($i<$row ['rpoint']){
-		echo '★';
-	}else{
-		echo '☆';
-	}
-}
-'</h1>';
-
-echo '<input type="button" value="店舗情報を編集する" >';
 echo '<a href="?do=p_shop_delete&sname='.$sname.'">店舗情報の削除</a>';
 while ($row) {
 	//$r  = $row['urole'];// ユーザ種別コード取得（数字）
