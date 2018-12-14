@@ -1,15 +1,16 @@
 <?php
 require_once('src/db_inc.php');
 $uid=$_SESSION['uid'];
-$sname=$_GET['sname'];
+$sid=$_SESSION['sid'];
+
 
 $sql="SELECT sname,address,open,close,holiday,budget,time,uid
 FROM tb_shop NATURAL LEFT JOIN tb_user
-WHERE sname='{$sname}'";
+WHERE sid='{$sid}'";
 
 $rs = mysql_query ( $sql,$conn);
-//$row = mysql_fetch_array ( $rs );
-
+$row = mysql_fetch_array ( $rs );
+/*
 if(isset($_GET['sname'])){
 	$sname=$_GET['sname'];
 	$sql1 = "SELECT*FROM tb_shop WHERE sname='{$sname}'";
@@ -17,7 +18,8 @@ if(isset($_GET['sname'])){
 if (! $rs1)
 		die ( 'エラー: ' . mysql_error () );
 	$row = mysql_fetch_array ( $rs1 );
-	if ($row) { // 既存アカウントを編集するために、変数に代入
+	*/
+//	if ($row) { // 既存アカウントを編集するために、変数に代入
 		$sname = $row['sname'];
 		$address = $row['address'];
 		$holiday = $row['holiday'];
@@ -25,8 +27,8 @@ if (! $rs1)
 		$close = $row['close'];
 		$time = $row['time'];
 		$budget = $row['budget'];
-	}
-}
+//	}
+//}
 //echo '名前　　　<input type="text" name="snamae" size="20" maxlength="10" value="'.$sname.'"><br>';
 ?>
 
