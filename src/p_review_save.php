@@ -21,8 +21,8 @@ if (!$code) {
 
 
 
-$kanso = $_REQUEST['kanso'];
-$rpoint = $_REQUEST['rpoint'];
+$kanso = $_POST['kanso'];
+$rpoint = $_POST['rpoint'];
 $sql = "INSERT INTO tb_review (comment, rpoint) VALUES ('$kanso','$rpoint')";
 
 
