@@ -1,64 +1,53 @@
 <html>
-<form action="?do=p_shop_refer" method="post">
-
+<form action="?do=p_review_detail" method="post">
 <?php
-
-
-
-//var_dump($_POST);
-
-
-require_once('db_inc.php');
-$coon=mysql_connect("localhost","root");
-mysql_select_db("pbl",$conn);
-
-
-
+require_once ('src/db_inc.php');
+$conn = mysql_connect ( "localhost", "root", "" ); // 開発環境
+mysql_select_db ( "pbl", $conn );
+if (! $conn) {
+	die ( 'データベースに接続できませんでした。' );
+}
+$db_selected = mysql_select_db ( 'pbl', $conn );
+if (! $db_selected) {
+	die ( 'データベースを選択できませんでした。' );
+}
+$code = mysql_query ( 'SET NAMES utf8', $conn );
+if (! $code) {
+	die ( '文字コードを指定できませんでした。' );
+}
+$sql = "select MAX(rid) as Mrid from tb_review";
+$rs = mysql_query ( $sql );
+$r = mysql_fetch_assoc ( $rs );
+$rid = $r ['Mrid'] + 1;
+//echo $rid;
+$sid = $_SESSION['sid'];
 $uid = $_SESSION ['uid'];
-//echo $uid;
-
-$sname=$_POST['sname'];
-//echo $sname;
-
-//$sid=$_POST['sid'];
-$address = $_POST['address'];
-
-$open = $_POST['open'];
-$close = $_POST['close'];
-$time = $_POST['time'];
-$budget = $_POST['budget'];
-$holiday = $_POST['holiday'];
-$uid = $_SESSION['uid'];
-
-
-	//$sql = "INSERT INTO tb_shop (sname,address,open,close,time,budget,holiday,uid) VALUES
-	//('$sname','$address','$open','$close','$time','$budget','$holiday,'$uid')";
-
-	$sql="INSERT INTO `tb_shop`( `sname`, `address`, `open`, `close`, `time`, `budget`, `holiday`, `uid`)
-		VALUES ('$sname','$address','$open','$close','$time','$budget','$holiday','$uid')";
-	//if (){//既存のアカウントを編集する場合は
-		//$sql2 = "UPDATE tb_shop SET sname='{$sname}',address='{$address}',open='{$open}',close='{$urole}',time='{$time}',budget='{$budget}',uid='{$uid}' WHERE uid='{$old_uid}'";
-	//}
-
-	if($sname==""){
-		echo "店舗名が入力されていません";
-	}else if($address==""){
-		echo "住所が入力されていません";
-	}else{
-
-	echo '<h3>登録されました</h3>';
+$kanso = $_POST ['kanso'];
+$rpoint = $_POST ['rpoint'];
+if ($rpoint == "selected") {
+	echo '<h3>エラー:評価点を選択してください</h3>';
+} else {
+	if ($kanso == "") {
+		echo '<h3>エラー:コメントを入力してください</h3>';
+	} else {
+		$sql = "INSERT INTO tb_review (rid,rpoint,comment,sid,uid ) VALUES ('$rid','$rpoint','$kanso','$sid','$uid')";
+		$result_flag = mysql_query ( $sql );
+		echo '<h3>登録が完了しました</h3>';
 	}
-
-
-$result_flag = mysql_query($sql);
-
-
-$cnon = mysql_close($conn);
-
-
-
+}
+/*
+if (! $result_flag) {
+	die ( 'INSERTクエリーが失敗しました。' . mysql_error () );
+}
+*/
+$cnon = mysql_close ( $conn );
+if (! $conn) {
+	die ( 'データベースとの接続を閉じられませんでした。' );
+}
 ?>
-
-</body>
+<p>
+		<br /> <a href="?do=p_review_detail">戻る</a>
+	</p>
+	</body>
 </form>
 </html>
