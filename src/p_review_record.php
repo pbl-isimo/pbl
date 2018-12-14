@@ -2,8 +2,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <form action="?do=p_review_save" method="post" enctype="multipart/form-data">
 <?php
-$sname=$_GET['sname'];
-echo $sname;
+//$sname=$_GET['sname'];
+//echo $sname;
 
 require_once ('src/db_inc.php');
 
