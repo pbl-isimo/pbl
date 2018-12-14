@@ -1,6 +1,6 @@
 <h2>店舗登録</h2>
 ＊がついているところは必須入力
-<form action="?do=p_shop_save" method="post">
+<form action="?do=p_shop_new_save" method="post">
 *名前　　　<input type="text" name="sname" size="20" maxlength="10"><br>
 *住所　　　<input type="text" name="address" size="70" maxlength="50"><br>
 定休日　　<input type="text" name="holiday" size="4" maxlength="2">曜日<br>
