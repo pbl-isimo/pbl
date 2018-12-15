@@ -60,11 +60,14 @@ if (isset ( $_SESSION ['uid_kind'] )) {
 echo '
 <select id="sel">
 	<option value="" selected>設定</option>
-	<option value="?do=ur_add">ユーザ情報編集</option>
+	<option value="?do=ur_edit">ユーザ情報編集</option>
 	<option value="?do=p_shop_record">店舗登録</option>
 	<option value="?do=sys_logout">ログアウト</option>
 </select><br><br>';
 } else {
+	if($_SERVER['QUERY_STRING'] != "do=sys_login"){
+		echo '<script> location.replace("?do=sys_login"); </script>';
+	}
 	// echo '<a href="?do=sys_check">ログイン</a>　　　';
 }
 ?>

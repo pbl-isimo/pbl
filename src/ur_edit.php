@@ -3,10 +3,12 @@
   $types = array(0 => "管理者", 1 => "社員", 2 => "ゲスト");
   if($_SESSION ['uid_kind'] == 0){
     echo '<h1>管理者用ユーザ編集</h1>';
+    $id = $_POST["id"];
   }else{
     echo '<h1>ユーザ編集</h1>';
+    $id = $_SESSION["uid"];
   }
-  $id = $_POST["id"];
+
   $sql='SELECT * FROM tb_user WHERE uid = "'.$id.'";';
   $rs = mysql_query ( $sql, $conn );
   $row = mysql_fetch_array($rs);

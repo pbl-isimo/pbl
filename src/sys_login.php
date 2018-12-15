@@ -15,6 +15,7 @@
 </form>
 </body>
 <?php
+
 //echo $_SESSION['login'];
 /*
 if(!$_SESSION['uid']){
