@@ -39,7 +39,7 @@ while ($row) {
 	//echo '<tr>';
 	//echo '<tr><td>' .'店舗名'.'</td><td>'. $row['comment'] . '</td></tr>'; // ユーザ種別コードを名称に変換（連想配列利用）
 	echo '<tr><td>' .'営業時間'.'</td><td>'. $row['open'] . '～'.$row['close'].'</td></tr>';
-	echo '<tr><td>' .'住所'.'</td><td>'. $row['address'] . '</td></tr>';
+	echo '<tr><td>' .'住所'.'</td><td>'. $row['address'] . '<a href="?do=p_map"target="_blank">マップ参照</a></td></tr>';
 	echo '<tr><td>' .'定休日'.'</td><td>'. $row['holiday'] . '</td></tr>';
 	echo '<tr><td>' .'平均予算'.'</td><td>'. $row['budget'] .'円'. '</td></tr>';
 	echo '<tr><td>' .'所要時間'.'</td><td>'.'徒歩'. $row['time'] .'分'. '</td></tr>';
