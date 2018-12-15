@@ -1,19 +1,20 @@
 <?php
 
 require_once ('db_inc.php');
-$sname=$_GET['sname'];
-
+//$sname=$_GET['sname'];
+$sid = $_SESSION['sid'];
 
 
 $sql="SELECT sid,sname,address,open,close,time,budget,holiday,uid,rpoint,rid,comment,pid,uname
 		From tb_shop natural left join tb_review natural left join tb_user
-		WHERE sname='$sname'";
+		WHERE sid='$sid'";
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 
 
 
 $row = mysql_fetch_array($rs) ;
+$sname = $row['sname'];
 echo '<h1>'.$sname;
 for($i=0;$i<5;$i++){
 	if($i<$row ['rpoint']){
@@ -23,11 +24,11 @@ for($i=0;$i<5;$i++){
 	}
 }
 '</h1>';
-echo '<form action="?do=p_shop_edit&sname='.$_GET['sname'].'" method="post">';
-echo '<input type="submit" onclick="location.href="p_shop_edit&sname='.$_GET['sname'].'" " value="店舗編集" />';
+echo '<form action="?do=p_shop_edit&sname='.$sname.'" method="post">';
+echo '<input type="submit" onclick="location.href="p_shop_edit&sname='.$sname.'" " value="店舗編集" />';
 echo '</form>';
-echo '<form action="?do=p_shop_delete&sname='.$_GET['sname'].'" method="post">';
-echo '<input type="submit" onclick="location.href="p_shop_delete&sname='.$_GET['sname'].'" " value="店舗削除" />';
+echo '<form action="?do=p_shop_delete&sname='.$sname.'" method="post">';
+echo '<input type="submit" onclick="location.href="p_shop_delete&sname='.$sname.'" " value="店舗削除" />';
 echo '</form>';
 while ($row) {
 	//$r  = $row['urole'];// ユーザ種別コード取得（数字）
