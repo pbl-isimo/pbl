@@ -2,8 +2,9 @@
 require_once ('db_inc.php');
 
 $sname = $_GET ['sname'];
-// $sid = $_SESSION ['sid'];
+$sid = $_GET ['sid'];
 $uid = $_SESSION ['uid'];
+
 
 $sql = "SELECT sid,sname,address,open,close,time,budget,holiday,uid,rpoint,rid,comment,pid,uname
 		From tb_shop natural left join tb_review natural left join tb_user
@@ -42,7 +43,7 @@ if ($uid_kind == 0 || $uid_kind == 1) {
 		echo '</form>';
 	}
 }
-
+/*
 echo '<form action="?do=p_review_detail" method="post">';
 echo '<input type="submit" onclick="location.href="?do=p_review_detail" " value="口コミ詳細" />';
 echo '</form>';
@@ -50,7 +51,7 @@ echo '</form>';
 echo '<form action="?do=p_review_record" method="post">';
 echo '<input type="submit" onclick="location.href="?do=p_review_record" " value="口コミ編集" />';
 echo '</form>';
-
+*/
 while ( $row ) {
 	// $r = $row['urole'];// ユーザ種別コード取得（数字）
 	$_SESSION ['sid'] = $row ['sid'];
@@ -88,22 +89,32 @@ while ( $row ) {
 		$_SESSION ['sid'] = $row ['sid'];
 
 		echo '<tr><td>' . $row ['item'] . '</td><td>' . $row ['price'] . "円" . '</td><td>' . $row ['mcontents'] . '</td>
-		<td><a href="?do=p_menu_edit&sname=' . $_GET ['sname'] . '">編集</a></td>
+		<td><a href="?do=p_menu_edit&sname=' . $_GET ['sname'] . '&sid='.$_GET['sid'].'">編集</a></td>
 		<td><a href="?do=p_menu_delete&sname=' . $_GET ['sname'] . '">削除</a></td></tr>';
 
 		$row = mysql_fetch_array ( $rs2 );
 	}
 	echo '</table>';
+	if ($uid_kind == 0 || $uid_kind == 1) {
+		if ($uid_kind == 0 || $s_uid == $uid) {
 
-	echo '<form action="?do=p_menu_refer&sname=' . $_GET ['sname'] . '" method="post">';
-	echo '<input type="submit" onclick="location.href="p_menu_refer&sname=' . $_GET ['sname'] . '" " value="メニュー追加" />';
+	echo '<form action="?do=p_menu_refer&sname=' . $_GET ['sname'] . '&sid='.$_GET['sid'].'" method="post">';
+	echo '<input type="submit" onclick="location.href="p_menu_refer&sname=' . $_GET ['sname'] .'&sid='.$_GET['sid']. '" value="メニュー追加" />';
 	echo '</form>';
+		}
+	}
+
 
 	echo '<h2>口コミ</h2>';
+	if ($uid_kind == 0 || $uid_kind == 1) {
+		if ($uid_kind == 0 || $s_uid == $uid) {
 
 	echo '<form action="?do=p_review_record&sname=' . $_GET ['sname'] . '" method="post">';
 	echo '<input type="submit" onclick="location.href="p_review_record&sname=' . $_GET ['sname'] . '" " value="口コミ投稿" />';
 	echo '</form>';
+		}
+	}
+
 
 	$sql3 = "SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left join tb_user Natural left join tb_shop WHERE sname='$sname'";
 	$rs3 = mysql_query ( $sql3, $conn );
