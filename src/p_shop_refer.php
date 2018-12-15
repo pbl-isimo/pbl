@@ -1,7 +1,7 @@
 <?php
 require_once ('db_inc.php');
 $sname = $_GET ['sname'];
-$sid = $_GET ['sid'];
+//$sid = $_GET ['sid'];
 $uid = $_SESSION ['uid'];
 $sql = "SELECT sid,sname,address,open,close,time,budget,holiday,uid,rpoint,rid,comment,pid,uname
 		From tb_shop natural left join tb_review natural left join tb_user
@@ -78,15 +78,15 @@ while ( $row2 ) {
 //	$_SESSION ['sid'] = $row2 ['sid'];
 	$mid = $row2['mid'];
 	echo '<tr><td>' . $row2 ['item'] . '</td><td>' . $row2 ['price'] . "円" . '</td><td>' . $row2 ['mcontents'] . '</td>
-		<td><a href="?do=p_menu_edit&mid=' . $mid . '&sname='.$_GET['sname'].'&sid='.$_GET['sid'].'">編集</a></td>
+		<td><a href="?do=p_menu_edit&mid=' . $mid . '&sname='.$sname.'&sid='.$sid.'">編集</a></td>
 		<td><a href="?do=p_menu_delete&mid=' . $mid . '">削除</a></td></tr>';
 	$row2 = mysql_fetch_array ( $rs2 );
 }
 echo '</table>';
 if ($uid_kind == 0 || $uid_kind == 1) {
 	//if ($uid_kind == 0 || $s_uid == $uid) {
-	echo '<form action="?do=p_menu_refer&sname=' . $_GET ['sname'] . '&sid='.$_GET['sid'].'" method="post">';
-	echo '<input type="submit" onclick="location.href="p_menu_refer&sname=' . $_GET ['sname'] .'&sid='.$_GET['sid']. '" value="メニュー追加" />';
+	echo '<form action="?do=p_menu_refer&sname=' . $sname . '&sid='.$sid.'" method="post">';
+	echo '<input type="submit" onclick="location.href="p_menu_refer&sname=' . $sname .'&sid='.$sid. '" value="メニュー追加" />';
 	echo '</form>';
 		//}
 	}
