@@ -1,20 +1,21 @@
 <?php
 
 require_once ('db_inc.php');
-//$sname=$_GET['sname'];
+$sname=$_GET['sname'];
 $sid = $_SESSION['sid'];
+
 
 
 $sql="SELECT sid,sname,address,open,close,time,budget,holiday,uid,rpoint,rid,comment,pid,uname
 		From tb_shop natural left join tb_review natural left join tb_user
-		WHERE sid='$sid'";
+		WHERE sname='$sname'";
 $rs = mysql_query($sql, $conn);
 if (!$rs) die ('エラー: ' . mysql_error());
 
 
 
 $row = mysql_fetch_array($rs) ;
-$sname = $row['sname'];
+//$sname = $row['sname'];
 echo '<h1>'.$sname;
 for($i=0;$i<5;$i++){
 	if($i<$row ['rpoint']){
