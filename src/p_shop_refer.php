@@ -28,9 +28,21 @@ for($i=0;$i<5;$i++){
 echo '<form action="?do=p_shop_edit&sname='.$sname.'" method="post">';
 echo '<input type="submit" onclick="location.href="p_shop_edit&sname='.$sname.'" " value="店舗編集" />';
 echo '</form>';
+
 echo '<form action="?do=p_shop_delete&sname='.$sname.'" method="post">';
 echo '<input type="submit" onclick="location.href="p_shop_delete&sname='.$sname.'" " value="店舗削除" />';
 echo '</form>';
+
+echo '<form action="?do=p_review_detail" method="post">';
+echo '<input type="submit" onclick="location.href="?do=p_review_detail" " value="口コミ詳細" />';
+echo '</form>';
+
+echo '<form action="?do=p_review_record" method="post">';
+echo '<input type="submit" onclick="location.href="?do=p_review_record" " value="口コミ編集" />';
+echo '</form>';
+
+
+
 while ($row) {
 	//$r  = $row['urole'];// ユーザ種別コード取得（数字）
 	$_SESSION['sid']   = $row['sid'];
@@ -116,7 +128,7 @@ while($row){
 
 
 
-
+/*
 echo '
 <br>
 <br>
@@ -132,4 +144,5 @@ echo '
 <br>
 <a href="?do=p_map"target="_blank">マップ参照</a>
 ';
+*/
 ?>
