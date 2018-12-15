@@ -92,8 +92,7 @@ $row = mysql_fetch_array ( $rs );
 var_dump ( $row3 );
 $row2 = mysql_fetch_array ( $rs );
 var_dump ( $row2 );*/
-
-	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '&sid='.$row['sname'].'">'
+	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '&sid='.$row['sid'].'">'
 		. $row ['sname'] . '</a>　　';
 	//echo '評価数' . $row ['rpoint'] . '<br>';
 	for($i=0;$i<5;$i++){
