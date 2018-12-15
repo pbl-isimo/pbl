@@ -1,4 +1,18 @@
-﻿<body bgcolor="#FFDBC9">
+﻿<!DOCTYPE html>
+<html lang="ja">
+<meta http-equiv="Content-TYPE" content="text/html; charset=UTF-8">
+<br>
+<br>
+<br>
+<br>
+<br>
+<body>
+<div id="center">
+<img src="img/pitarogo.png"width="300"height="200">
+</div>
+</body>
+
+<body bgcolor="#FFDBC9">
 <form action="?do=sys_check" method="post" class="form">
 <table class="table table-hover">
 	<tr>
