@@ -43,7 +43,7 @@ $(document).ready(function(){
 ～1000<input type="radio" name="budget" value="-1000">&nbsp
 それ以上<input type="radio" name="budget" value="others yosan">
 <br>
-<font size="3">距離&nbsp</font>
+<font size="3">所要時間&nbsp</font>
 ～10分<input type="radio" name="time" value="-10m">&nbsp
 ～20分<input type="radio" name="time" value="-20m">&nbsp
 ～30分<input type="radio" name="time" value="-30m">&nbsp
@@ -93,7 +93,7 @@ var_dump ( $row3 );
 $row2 = mysql_fetch_array ( $rs );
 var_dump ( $row2 );*/
 
-	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '">'
+	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '&sid='.$row['sname'].'">'
 		. $row ['sname'] . '</a>　　';
 	//echo '評価数' . $row ['rpoint'] . '<br>';
 	for($i=0;$i<5;$i++){
