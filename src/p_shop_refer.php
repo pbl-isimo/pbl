@@ -93,7 +93,7 @@ while ( $row2 ) {
 	$mid = $row2['mid'];
 
 	echo '<tr><td>' . $row2 ['item'] . '</td><td>' . $row2 ['price'] . "円" . '</td><td>' . $row2 ['mcontents'] . '</td>
-		<td><a href="?do=p_menu_edit&mid=' . $mid . '">編集</a></td>
+		<td><a href="?do=p_menu_edit&mid=' . $mid . '&sname='.$_GET['sname'].'&sid='.$_GET['sid'].'">編集</a></td>
 		<td><a href="?do=p_menu_delete&mid=' . $mid . '">削除</a></td></tr>';
 
 	$row2 = mysql_fetch_array ( $rs2 );
