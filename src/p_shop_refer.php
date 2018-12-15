@@ -118,7 +118,7 @@ echo '</form>';
 	}
 }
 
-$sql3 = "SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left join tb_user Natural left join tb_shop WHERE sname='$sname'";
+$sql3 = "SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left join tb_user Natural left join tb_shop WHERE sid='$sid'";
 $rs3 = mysql_query ( $sql3, $conn );
 // if (!$rs) die ('エラー: ' . mysql_error());
 $row3 = mysql_fetch_array ( $rs3 );
@@ -133,7 +133,7 @@ while ( $row3 ) {
 	}
 
 	echo '<br>' . $row3 ['comment'];
-	echo '<br><a href="?do=p_review_detail&uid">もっと見る</a>';
+	echo '<br><a href="?do=p_review_detail&uid='.$uid.'">もっと見る</a><br>';
 
 	$row3 = mysql_fetch_array ( $rs3 );
 }
