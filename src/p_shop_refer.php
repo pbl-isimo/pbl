@@ -23,9 +23,12 @@ for($i=0;$i<5;$i++){
 	}
 }
 '</h1>';
-
-echo '<input type="button" value="店舗情報を編集する" >';
-echo '<a href="?do=p_shop_delete&sname='.$sname.'">店舗情報の削除</a>';
+echo '<form action="?do=p_shop_edit&sname='.$_GET['sname'].'" method="post">';
+echo '<input type="submit" onclick="location.href="p_shop_edit&sname='.$_GET['sname'].'" " value="店舗編集" />';
+echo '</form>';
+echo '<form action="?do=p_shop_delete&sname='.$_GET['sname'].'" method="post">';
+echo '<input type="submit" onclick="location.href="p_shop_delete&sname='.$_GET['sname'].'" " value="店舗削除" />';
+echo '</form>';
 while ($row) {
 	//$r  = $row['urole'];// ユーザ種別コード取得（数字）
 	$_SESSION['sid']   = $row['sid'];
@@ -70,9 +73,16 @@ while($row){
 }
 echo '</table>';
 
-echo '<input type="button" value="メニュー追加" >';
+echo '<form action="?do=p_menu_refer&sname='.$_GET['sname'].'" method="post">';
+echo '<input type="submit" onclick="location.href="p_menu_refer&sname='.$_GET['sname'].'" " value="メニュー追加" />';
+echo '</form>';
 
-echo '<h2>口コミ<input type="button" value="口コミ投稿" ></h2>';
+
+echo '<h2>口コミ</h2>';
+
+echo '<form action="?do=p_review_record&sname='.$_GET['sname'].'" method="post">';
+echo '<input type="submit" onclick="location.href="p_review_record&sname='.$_GET['sname'].'" " value="口コミ投稿" />';
+echo '</form>';
 
 $sql3="SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left join tb_user Natural left join tb_shop WHERE sname='$sname'";
 $rs3 = mysql_query($sql3, $conn);
