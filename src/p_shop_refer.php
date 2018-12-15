@@ -2,7 +2,7 @@
 require_once ('db_inc.php');
 
 $sname = $_GET ['sname'];
-$sid = $_GET ['sid'];
+//$sid = $_GET ['sid'];
 $uid = $_SESSION ['uid'];
 
 
@@ -14,7 +14,7 @@ if (! $rs)
 	die ( 'エラー: ' . mysql_error () );
 $row = mysql_fetch_array ( $rs );
 $s_uid = $row ['uid'];
-
+$sid = $row['sid'];
 $sql0 = "SELECT uid,uid_kind FROM tb_user WHERE uid = '$uid'";
 $rs0 = mysql_query ( $sql0 );
 $row0 = mysql_fetch_array ( $rs0 );
@@ -74,85 +74,71 @@ while ( $row ) {
 	echo '<br>';
 
 	// echo'<h2>メニュー</h2>';
+	$row = mysql_fetch_array ( $rs );
+}
+$sql2 = "SELECT sid,item,price,mid,mcontents From tb_menu  WHERE sid='$sid'";
+$rs2 = mysql_query ( $sql2, $conn );
 
-	$sql2 = "SELECT sid,item,price,mcontents From tb_menu Natural Join tb_shop WHERE sname='$sname'";
-	$rs2 = mysql_query ( $sql2, $conn );
+$row2 = mysql_fetch_array ( $rs2 );
 
-	$row = mysql_fetch_array ( $rs2 );
-	// $num=mysql_num_rows( $rs2 );
+$item = $row2['item'];
+// $num=mysql_num_rows( $rs2 );
 
-	if (! $rs2)
-		die ( 'エラー: ' . mysql_error () );
-	echo '<table border=1>';
-	echo "<tr><th>メニュー</th></tr>";
-	while ( $row ) {
-		$_SESSION ['sid'] = $row ['sid'];
+if (! $rs2)
+	die ( 'エラー: ' . mysql_error () );
+echo '<table border=1>';
+echo "<tr><th>メニュー</th></tr>";
+while ( $row2 ) {
+//	$_SESSION ['sid'] = $row2 ['sid'];
+	$mid = $row2['mid'];
 
-		echo '<tr><td>' . $row ['item'] . '</td><td>' . $row ['price'] . "円" . '</td><td>' . $row ['mcontents'] . '</td>
-		<td><a href="?do=p_menu_edit&sname=' . $_GET ['sname'] . '&sid='.$_GET['sid'].'">編集</a></td>
-		<td><a href="?do=p_menu_delete&sname=' . $_GET ['sname'] . '">削除</a></td></tr>';
+	echo '<tr><td>' . $row2 ['item'] . '</td><td>' . $row2 ['price'] . "円" . '</td><td>' . $row2 ['mcontents'] . '</td>
+		<td><a href="?do=p_menu_edit&mid=' . $mid . '">編集</a></td>
+		<td><a href="?do=p_menu_delete&mid=' . $mid . '">削除</a></td></tr>';
 
-		$row = mysql_fetch_array ( $rs2 );
-	}
-	echo '</table>';
-	if ($uid_kind == 0 || $uid_kind == 1) {
-		if ($uid_kind == 0 || $s_uid == $uid) {
+	$row2 = mysql_fetch_array ( $rs2 );
+}
+echo '</table>';
+
+if ($uid_kind == 0 || $uid_kind == 1) {
+	if ($uid_kind == 0 || $s_uid == $uid) {
 
 	echo '<form action="?do=p_menu_refer&sname=' . $_GET ['sname'] . '&sid='.$_GET['sid'].'" method="post">';
 	echo '<input type="submit" onclick="location.href="p_menu_refer&sname=' . $_GET ['sname'] .'&sid='.$_GET['sid']. '" value="メニュー追加" />';
 	echo '</form>';
 		}
 	}
+echo '<h2>口コミ</h2>';
+if ($uid_kind == 0 || $uid_kind == 1) {
+	if ($uid_kind == 0 || $s_uid == $uid) {
 
-
-	echo '<h2>口コミ</h2>';
-	if ($uid_kind == 0 || $uid_kind == 1) {
-		if ($uid_kind == 0 || $s_uid == $uid) {
-
-	echo '<form action="?do=p_review_record&sname=' . $_GET ['sname'] . '" method="post">';
-	echo '<input type="submit" onclick="location.href="p_review_record&sname=' . $_GET ['sname'] . '" " value="口コミ投稿" />';
-	echo '</form>';
-		}
+echo '<form action="?do=p_review_record&sname=' . $_GET ['sname'] . '" method="post">';
+echo '<input type="submit" onclick="location.href="p_review_record&sname=' . $_GET ['sname'] . '" " value="口コミ投稿" />';
+echo '</form>';
 	}
-
-
-	$sql3 = "SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left join tb_user Natural left join tb_shop WHERE sname='$sname'";
-	$rs3 = mysql_query ( $sql3, $conn );
-	// if (!$rs) die ('エラー: ' . mysql_error());
-	$row = mysql_fetch_array ( $rs3 );
-	while ( $row ) {
-		echo '<b>' . $row ['uname'] . '</b>';
-		for($i = 0; $i < 5; $i ++) {
-			if ($i < $row ['rpoint']) {
-				echo '★';
-			} else {
-				echo '☆';
-			}
-		}
-
-		echo '<br>' . $row ['comment'];
-		echo '<br><a href="?do=p_review_detail&uid">もっと見る</a>';
-
-		$row = mysql_fetch_array ( $rs3 );
-	}
-	$row = mysql_fetch_array ( $rs );
 }
 
-/*
- * echo '
- * <br>
- * <br>
- * <a href="?do=p_review_record' . $_GET ['sname'] . '">口コミ編集</a>
- * <br>
- * <a href="?do=p_review_detail' . $_GET ['sname'] . '">口コミ情報</a>
- * <br>
- * <a href="?do=p_menu_edit&sname=' . $_GET ['sname'] . '">メニュー編集</a>
- * <br>
- * <a href="?do=p_menu_refer&sname=' . $_GET ['sname'] . '">メニュー登録</a>
- * <br>
- * <a href="?do=p_shop_edit&sname='.$_GET['sname'].'">店舗編集</a>
- * <br>
- * <a href="?do=p_map"target="_blank">マップ参照</a>
- * ';
- */
+$sql3 = "SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left join tb_user Natural left join tb_shop WHERE sname='$sname'";
+$rs3 = mysql_query ( $sql3, $conn );
+// if (!$rs) die ('エラー: ' . mysql_error());
+$row3 = mysql_fetch_array ( $rs3 );
+while ( $row3 ) {
+	echo '<b>' . $row3 ['uname'] . '</b>';
+	for($i = 0; $i < 5; $i ++) {
+		if ($i < $row3 ['rpoint']) {
+			echo '★';
+		} else {
+			echo '☆';
+		}
+	}
+
+	echo '<br>' . $row3 ['comment'];
+	echo '<br><a href="?do=p_review_detail&uid">もっと見る</a>';
+
+	$row3 = mysql_fetch_array ( $rs3 );
+}
+
+
+
+
 ?>
