@@ -20,25 +20,29 @@
     echo '<td>'.$row['sname'].'</td>';
 
     echo '<td>';
-    echo '<form action="?do=ur_edit" method="post">';
+    echo '<form action="?do=p_shop_edit" method="post">';
 		echo '<input type="submit" value="edit">';
 		echo '<input type="hidden" name="id" value="'.$row['sid'].'">';
     echo '</form>';
     echo '</td>';
 
     echo '<td>';
-    echo '<form action="src/ur_delete.php" method="post" onsubmit="return delChk(\''.$row["sname"].'\')">';
+    echo '<form action="src/p_mas_shop_del.php" method="post" onsubmit="return delChk(\''.$row["sname"].'\')">';
 		echo '<input type="submit" value="delete">';
-		echo '<input type="hidden" name="id" value="'.$row['uid'].'">';
+    echo '<input type="hidden" name="id" value="'.$row['sid'].'">';
+    echo '<input type="hidden" name="name" value="'.$row['sname'].'">';
     echo '</form>';
 
-    echo '<td>'.$row1['num'].'</td>';
+    $rev_num = $row1['num'];
+    echo '<td>'.$rev_num.'</td>';
 
     echo '<td>';
-    echo '<form action="?do=ur_edit" method="post">';
-		echo '<input type="submit" value="edit">';
-		echo '<input type="hidden" name="id" value="'.$row['sid'].'">';
-    echo '</form>';
+    if($rev_num != 0){
+      echo '<form action="?do=p_mas_review_list" method="post">';
+		  echo '<input type="submit" value="edit">';
+		  echo '<input type="hidden" name="id" value="'.$row['sid'].'">';
+      echo '</form>';
+    }
     echo '</td>';
     echo '</tr>';
   }
