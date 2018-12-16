@@ -28,6 +28,7 @@ $time = $_POST ['time'];
 $budget = $_POST ['budget'];
 $holiday = $_POST ['holiday'];
 $uid = $_SESSION ['uid'];
+$sid=$_POST['sid_max']+1;
 
 if ($sname == "") {
 	echo "店舗名が入力されていません";
