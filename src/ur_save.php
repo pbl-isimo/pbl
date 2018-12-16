@@ -41,6 +41,7 @@ if ($people >= 1) {
 				$sql2 = "UPDATE tb_user SET uname='$uname',psword='$pass1' WHERE uid='{$u}'";
 				mysql_query ( $sql2);
 				echo '<h3>アカウントが更新されました</h3>';
+				echo '<a href="?do=p_top">戻る</a>';
 			} else {
 				echo '<h3>エラー：新しいパスワードが一致しないので登録できません</h3>';
 			}
