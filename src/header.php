@@ -45,14 +45,14 @@ if (isset ( $_SESSION ['uid_kind'] )) {
 	// echo '<a href="?do=p_top">ぴたてん(トップページ)</a>　　';
 	if ($_SESSION ['uid_kind'] == 1) { // 社員
 	                                   // echo '<a href="">ユーザ情報編集画面</a>　　';
-		echo '<a href="?do=p_shop_record">店舗登録</a>　　';
+		//echo '<a href="?do=p_shop_record">店舗登録</a>　　';
 	}
 	if ($_SESSION ['uid_kind'] == 2) { // ゲスト
 		echo 'ゲストログイン　';
 	}
 	if ($_SESSION ['uid_kind'] == 0) { // 管理者
 
-		echo '<a href="?do=p_shop_record">店舗登録</a>　　';
+		//echo '<a href="?do=p_shop_record">店舗登録</a>　　';
 		/*
 		foreach ( $menu as $label => $action ) {
 			echo '<a href="?do=' . $action . '">' . $label . '</a>&nbsp;';
