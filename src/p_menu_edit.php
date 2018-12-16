@@ -9,8 +9,7 @@ $uid = $_SESSION ['uid'];
 // echo $uid;
 $sql = "SELECT * FROM tb_menu
 		natural join tb_shop
-		where sname='$sname'
-		and uid='$uid'";
+		where sname='$sname'";
 $rs = mysql_query ( $sql, $conn );
 $mid_max=0;
 if (! empty ( $row )) {
