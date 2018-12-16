@@ -1,11 +1,9 @@
-<div class="container">
 <center>
+<div class="container">
 <?php
 $sname=$_GET ['sname'];
 echo '<h1>'.$sname.'</h1>';
-?>
-<h2>メニュー編集</h2>
-<?php
+echo '<h2>メニュー編集</h2>';
 require_once ('db_inc.php');
 $uid = $_SESSION ['uid'];
 // echo $uid;
@@ -15,21 +13,25 @@ $sql = "SELECT * FROM tb_menu
 $rs = mysql_query ( $sql, $conn );
 $mid_max=0;
 if (! empty ( $row )) {
+	echo '<center>';
+	echo '<table class="table table-bordered">';
 	$num = mysql_num_rows ( $rs );
-	echo 'メニュー名　　　　　　値段　　　　　　　　　　　説明　　　<br>';
+	echo '<tr><td>メニュー名</td><td>値段</td><td>説明</td></tr><br>';
 	echo '<form action="?do=p_menu_move&sname='. $_GET ['sname'] . '&sid='.$_GET ['sid'].'" method="post">';
 	for($j = 1; $j <= $num; $j ++) {
 		$row = mysql_fetch_array ( $rs );
-	echo $row['mid'];
-	 echo '<input type="text" name="name'.$row['mid'].'"  size="10" maxlength="10" value="' . $row ['item'] . '">
-	 　<input type="text" name="price'.$row['mid'].'" size="10" maxlength="10" value="' . $row ['price'] . '">円
-	 　<textarea name="contents'.$row['mid'].'" rows="1" cols="40">' . $row ['mcontents'] . '</textarea><br>';
+		//echo $row['mid'];
+	 echo '<tr><td><input type="text" name="name'.$row['mid'].'"  size="10" maxlength="10" value="' . $row ['item'] . '">
+	 </td><td><input type="text" name="price'.$row['mid'].'" size="10" maxlength="10" value="' . $row ['price'] . '">円
+	 </td><td><textarea name="contents'.$row['mid'].'" rows="1" cols="40">' . $row ['mcontents'] . '</textarea></td></tr><br>';
 	 if($mid_max<$row['mid']){
 	 	$mid_max=$row['mid'];
 	 }
 	 echo '<input type="hidden" name="mid_max" value="'.$mid_max.'">';
 	}
-	echo '<input type="submit" value="編集"></form>';
+	echo '</table>';
+	echo '</center>';
+	echo '<input type="submit" value="編集" class="btn btn-info btn-sm"></form>';
 } else {
 	echo 'まだ登録がありません';
 }
@@ -37,5 +39,5 @@ if (! empty ( $row )) {
 </form>
 <br>
 <br>
-</center>
 </div>
+</center>

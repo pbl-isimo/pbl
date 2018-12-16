@@ -1,4 +1,4 @@
-<html>
+<center>
 <form action="?do=p_shop_refer" method="post">
 
 <?php
@@ -29,7 +29,8 @@ $budget = $_POST ['budget'];
 $holiday = $_POST ['holiday'];
 $uid = $_SESSION ['uid'];
 $sid=$_POST['sid_max']+1;
-
+?><div style="text-align:center;">
+<?php
 if ($sname == "") {
 	echo "店舗名が入力されていません";
 } else if ($address == "") {
@@ -50,7 +51,7 @@ if ($sname == "") {
 // $cnon = mysql_close($conn);
 
 ?>
-
+</div>
 </body>
 </form>
-</html>
+</center>

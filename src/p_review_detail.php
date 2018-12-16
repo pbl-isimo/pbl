@@ -1,3 +1,5 @@
+<center>
+<div class="container">
 <h2>口コミ詳細</h2>
 <?php
 require_once ('db_inc.php');
@@ -10,8 +12,8 @@ WHERE rid='$rid'";
 
 $rs = mysql_query ( $sql );
 $row = mysql_fetch_array ( $rs );
-echo '<center>';
-echo '<table border=1>';
+	echo '<center>';
+	echo '<table class="table table-bordered">';
 echo '<tr><th>ユーザ名</th><th>評価</th><th>コメント</th></tr>';
 
 while ( $row ) {
@@ -31,9 +33,10 @@ while ( $row ) {
 	$row = mysql_fetch_array($rs);
 }
 // echo '<br>'.$row['rpoint'];
-echo '</table>';
-echo '</center>';
+	echo '</table>';
+	echo '</center>';
 echo '<br>';
 
 ?>
-
+</div>
+</center>

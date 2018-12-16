@@ -1,3 +1,4 @@
+<center>
 <html>
 <form action="?do=p_shop_refer" method="post">
 
@@ -57,4 +58,5 @@ if($sname==""){
 
 </body>
 </form>
+</center>
 </html>

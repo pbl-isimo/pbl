@@ -1,4 +1,6 @@
 <html>
+<div class="container">
+<center>
 <form action="?do=p_review_detail" method="post">
 <?php
 require_once ('src/db_inc.php');
@@ -51,4 +53,6 @@ if (! $conn) {
 //	</body>
 ?>
 </form>
+</center>
+</div>
 </html>

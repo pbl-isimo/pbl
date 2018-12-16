@@ -1,3 +1,4 @@
+<center>
 <?php
 require_once ('db_inc.php');
 //
@@ -13,8 +14,8 @@ if (isset ( $_GET ['mid'] )) {
 	$rs1 = mysql_query ( $sql1 );
 	$row1 = mysql_fetch_array ( $rs1 );
 	$sname = $row1 ['sname'];
-	echo '<h2>このメニューを本当に削除しますか?</h2>';
-	echo '<a href="?do=p_menu_delete&mmid=' . $mid . '">はい</a> | <a href="?do=p_shop_refer&sname=' . $sname . '">いいえ</a>';
+	echo '<h2>このメニューを本当に削除しますか？</h2>';
+	echo '<a href="?do=p_menu_delete&mmid=' . $mid . '">はい</a> ・ <a href="?do=p_shop_refer&sname=' . $sname . '">いいえ</a>';
 } else if (isset ( $_GET ['mmid'] )) {
 	$mid = $_GET ['mmid'];
 	$sql = "DELETE FROM tb_menu WHERE mid='{$mid}'";
@@ -24,3 +25,4 @@ if (isset ( $_GET ['mid'] )) {
 	echo '<a href="?do=p_top">戻る</a>';
 }
 ?>
+</center>

@@ -1,13 +1,16 @@
+<center>
+<div class="container">
 <h2>店舗登録</h2>
 ＊がついているところは必須入力
 <form action="?do=p_shop_new_save" method="post">
-*名前　　　<input type="text" name="sname" size="20" maxlength="10"><br>
-*住所　　　<input type="text" name="address" size="70" maxlength="50"><br>
-定休日　　<input type="text" name="holiday" size="4" maxlength="2">曜日<br>
-営業時間　<input type="text" name="open" size="4" maxlength="20">
-～<input type="text" name="close" size="4" maxlength="20"><br>
-所要時間　徒歩　<input type="text" name="time" size="4" maxlength="2">分<br>
-平均予算　<input type="text" name="budget" size="4" maxlength="5">円<br>
+<table class="table table-bordered">
+<tr><td>*名前</td><td><input type="text" name="sname" size="20" maxlength="10" placeholder="食事処"><br></td></tr>
+<tr><td>*住所</td><td><input type="text" name="address" size="70" maxlength="50" placeholder="福岡県福岡市"><br></td></tr>
+<tr><td>定休日</td><td><input type="text" name="holiday" size="4" maxlength="2" placeholder="木">曜日<br></td></tr>
+<tr><td>営業時間</td><td><input type="text" name="open" size="4" maxlength="20" placeholder="12:00">
+～<input type="text" name="close" size="4" maxlength="20" placeholder="18:00"><br></td></tr>
+<tr><td>所要時間　徒歩</td><td><input type="text" name="time" size="4" maxlength="2" placeholder="5">分<br></td></tr>
+<tr><td>平均予算</td><td><input type="text" name="budget" size="4" maxlength="5"  placeholder="800">円<br></td></tr>
 
 <?php
 
@@ -37,5 +40,8 @@ $sql="INSERT INTO `pbl`.`tb_shop`
 $rs = mysql_query ( $sql, $conn );*/
 //$row = mysql_fetch_array ( $rs );
 ?>
-<input type="submit" value="登録">
+</table>
+<input type="submit" value="登録"  class="btn btn-info btn-sm">
 </form>
+</div>
+</center>
