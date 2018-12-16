@@ -3,11 +3,56 @@
 	<a href="?do=p_top">【トップページ】</a> です。
 	<br>
 	<br>
-	<form method="get"
-		action="http://localhost/PBL3/src/p_search_result.php?do=p_search_result"
-		target="_blank">
-		<input type="text" name="q" size="31" maxlength="255" value="">
-		<head>
+<?php
+require_once ('src/db_inc.php');
+// phpinfo();
+
+$sql2="SELECT * FROM tb_shop ORDER BY RAND() LIMIT 1";
+$rs2 = mysql_query ( $sql2, $conn );
+// var_dump ( $rs);
+$row = mysql_fetch_array ( $rs2 );
+
+while ($row){
+	$sid = $row['sid'];
+	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
+	$rs1 = mysql_query ( $sql1, $conn );
+	$row1 = mysql_fetch_array ( $rs1 );
+
+	//$row = mysql_fetch_array ( $rs );
+	/*
+	 * var_dump ( $row3 );
+	 * $row2 = mysql_fetch_array ( $rs );
+	 * var_dump ( $row2 );
+	*/
+	echo '<h1>'.'本日のオススメ'.'</h1>';
+	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '&sid=' . $row ['sid'] .
+	'&rpoint=' . $row1 ['AVG'] .'">' . $row ['sname'] . '</a>　　';
+	// echo '評価数' . $row ['rpoint'] . '<br>';
+	for($i = 0; $i < 5; $i ++) {
+		if ($i < $row1 ['AVG']) {
+			echo '★';
+		} else {
+			echo '☆';
+		}
+	}
+	echo '</h2>';
+	// echo $row ['rpoint'];
+	echo '営業時間　' . $row ['open'] . '～' . $row ['close'] . '<br>';
+	echo '定休日：' . $row ['holiday'] . '<br>';
+	echo '所要時間：徒歩' . $row ['time'] . '分<br>';
+	echo '予算：' . $row ['budget'] . '～<br><br><br>';
+	$row = mysql_fetch_array ( $rs );
+	//$row1 = mysql_fetch_array ( $rs1 );
+
+}
+
+?>
+
+<form method="get"
+	action="http://localhost/PBL3/src/p_search_result.php?do=p_search_result"
+	target="_blank">
+	<input type="text" name="q" size="31" maxlength="255" value="">
+	<head>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -72,9 +117,8 @@ $(document).ready(function(){
 <br>
 <br>
 <tr>
+
 <?php
-require_once ('src/db_inc.php');
-// phpinfo();
 $sql = "
 			SELECT * FROM tb_shop
 
