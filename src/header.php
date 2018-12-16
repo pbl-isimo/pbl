@@ -93,7 +93,7 @@ $(document).ready(function(){
 </head>
 <select id="sel">
 	<option value="" selected>設定</option>
-	<option value="?do=ur_add">ユーザ情報編集</option>
+	<option value="?do=ur_edit">ユーザ情報編集</option>
 	<option value="?do=p_shop_record">店舗登録</option>
 	<option value="?do=sys_logout">ログアウト</option>
 </select><br><br>';
@@ -113,7 +113,7 @@ $(document).ready(function(){
 <select id="sel">
 	<option value="" selected>設定</option>
 	<option value="?do=p_mas">マスタメンテナンス</option>
-	<option value="?do=ur_add">ユーザ情報編集</option>
+	<option value="?do=ur_edit">ユーザ情報編集</option>
 	<option value="?do=p_shop_record">店舗登録</option>
 	<option value="?do=sys_logout">ログアウト</option>
 </select><br><br>';

@@ -166,17 +166,5 @@ while ($row){
 
 </body>
 
-<div align="left">
-	<br> <br> <a href="?do=sys_login">ログイン画面</a> <br> <br> <a
-		href="?do=p_search_result">検索結果表示画面</a> <br> <a href="?do=p_mas">マスタメンテナンス（管理者のみ）...全ユーザ対象</a>
-	<br> <a href="?do=p_mas_user">マスタメンテナンス（ユーザ一覧）</a> <br> <a
-		href="?do=p_mas_shop">マスタメンテナンス（店舗一覧）</a> <br> <a
-		href="?do=p_mas_review">マスタメンテナンス（口コミ一覧）</a> <br> <br> <br> <a
-		href="?do=ur_add">ユーザ情報編集画面...ログインしているユーザ個人対象</a> <br> <br> <br> <a
-		href="?do=p_shop_record">店舗情報登録画面</a> <br> <a href="?do=p_shop_refer">店舗情報詳細画面</a>
-	<br> <a href="?do=p_shop_edit">店舗情報編集画面</a> <br> <br> <br> <a
-		href="?do=p_review_record">口コミ登録画面</a> <br> <a
-		href="?do=p_review_detail">口コミ詳細画面</a> <br> <a href="?do=p_menu_edit">メニュー編集・削除画面...社員全員可能</a>
-	<br> <a href="?do=p_menu_refer">メニュー参照</a> <br> <br>
-</div>
+
 </body>
