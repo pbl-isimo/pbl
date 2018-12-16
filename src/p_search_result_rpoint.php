@@ -109,7 +109,7 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
 
  }*/
  ?>
-
+<!--
 		<center>
 			<option value="" selected>絞り込み ▼</option>
 			<div
@@ -138,8 +138,8 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
 	<br>
 </body>
 </div>
-<br>
-<br>
+-->
+
 
 <?php
 echo '<form>';

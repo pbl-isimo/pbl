@@ -66,7 +66,17 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
        <input type="submit" name="" value="検索">
      </form>
 
-
+<?php
+echo '<form>';
+echo '<select onChange="top.location.href=value">';
+echo '<option value="">ソート</option>';
+echo '<option value="?do=p_search_result_rpoint">評価が高い順</option>';
+echo '<option value="?do=p_search_result_time_early">所要時間が短い順</option>';
+echo '<option value="?do=p_search_result_budget_low">予算が少ない順</option>';
+echo '<option value="?do=p_search_result_budget_high">予算が多い順</option>';
+echo '</select>';
+echo '</form>';
+?>
  <?php
  while ($row){
  	$sid = $row['sid'];
@@ -99,7 +109,7 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
  	//$row1 = mysql_fetch_array ( $rs1 );
  }
  ?>
-
+<!--
 		<center>
 			<option value="" selected>絞り込み ▼</option>
 			<div
@@ -128,20 +138,11 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
 	<br>
 </body>
 </div>
+-->
 <br>
 <br>
 
-<?php
-echo '<form>';
-echo '<select onChange="top.location.href=value">';
-echo '<option value="">ソート</option>';
-echo '<option value="?do=p_search_result_rpoint">評価が高い順</option>';
-echo '<option value="?do=p_search_result_time_early">所要時間が短い順</option>';
-echo '<option value="?do=p_search_result_budget_low">予算が少ない順</option>';
-echo '<option value="?do=p_search_result_budget_high">予算が多い順</option>';
-echo '</select>';
-echo '</form>';
-?>
+
 <br>
 <br>
 <tr>
