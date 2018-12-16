@@ -83,10 +83,12 @@ $rs = mysql_query ( $sql, $conn );
 // var_dump ( $rs);
 $row = mysql_fetch_array ( $rs );
 
-$sql1 ="select rpoint from tb_review";
-$rs1 = mysql_query ( $sql1, $conn );
-$row1 = mysql_fetch_array ( $rs1 );
 while ($row){
+	$sid = $row['sid'];
+	$sql1 ="select rpoint from tb_review where sid='$sid'";
+	$rs1 = mysql_query ( $sql1, $conn );
+	$row1 = mysql_fetch_array ( $rs1 );
+
 	//$row = mysql_fetch_array ( $rs );
 	/*
 	 * var_dump ( $row3 );
@@ -109,7 +111,7 @@ while ($row){
 	echo '所要時間：徒歩' . $row ['time'] . '分<br>';
 	echo '予算：' . $row ['budget'] . '～<br><br><br>';
 	$row = mysql_fetch_array ( $rs );
-	$row1 = mysql_fetch_array ( $rs1 );
+	//$row1 = mysql_fetch_array ( $rs1 );
 
 }
 ?>
