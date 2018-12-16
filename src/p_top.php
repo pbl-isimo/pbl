@@ -77,10 +77,8 @@ $(document).ready(function(){
 <br>
 <tr>
 <?php
-if($_SESSION['login'] != 1 && $_SERVER['QUERY_STRING'] != "do=sys_login"){
-		echo '<script> location.replace("?do=sys_login"); </script>';
-}
 require_once ('src/db_inc.php');
+//phpinfo();
 $sql = "
 			SELECT * FROM tb_shop
 			natural left join tb_review
