@@ -109,6 +109,8 @@ while ($row){
 	echo '所要時間：徒歩' . $row ['time'] . '分<br>';
 	echo '予算：' . $row ['budget'] . '～<br><br><br>';
 	$row = mysql_fetch_array ( $rs );
+	$row1 = mysql_fetch_array ( $rs1 );
+
 }
 ?>
 </center>
