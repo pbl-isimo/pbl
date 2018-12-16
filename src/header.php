@@ -22,7 +22,6 @@ if (isset ( $_SESSION ['uid_kind'] )) {
 			' メニュー登録・編集・削除画面 ' => 'p_menu',
 			' 口コミ情報登録画面 ' => 'p_review_record',
 			' 検索結果表示画面 ' => 'p_search_result',
-
 			' 店舗情報編集画面 ' => 'p_shop_edit',
 			' 店舗情報登録画面 ' => 'p_shop_record',
 			' 店舗情報参照画面 ' => 'p_shop_reference',
@@ -55,8 +54,6 @@ if (isset ( $_SESSION ['uid_kind'] )) {
 	}
 	//echo $uid;//ユーザの名前
 	//echo '<a href="?do=sys_logout">ログアウト</a>&nbsp;';
-?>
-<?php
 echo '
 <select id="sel">
 	<option value="" selected>設定</option>
@@ -65,9 +62,6 @@ echo '
 	<option value="?do=sys_logout">ログアウト</option>
 </select><br><br>';
 } else {
-	if($_SERVER['QUERY_STRING'] != "do=sys_login"){
-		echo '<script> location.replace("?do=sys_login"); </script>';
-	}
 	// echo '<a href="?do=sys_check">ログイン</a>　　　';
 }
 ?>

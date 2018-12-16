@@ -16,7 +16,7 @@
 </body>
 <?php
 
-//echo $_SESSION['login'];
+echo $_SESSION ['uid_kind'];
 /*
 if(!$_SESSION['uid']){
 	echo "ログインに失敗しました";

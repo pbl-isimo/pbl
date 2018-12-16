@@ -25,7 +25,7 @@ for($i=0;$i<5;$i++){
 '</h1>';
 
 echo '<input type="button" value="店舗情報を編集する" >';
-echo '<a href="?do=p_shop_delete&sname='.$sname.'">店舗情報の削除</a>';
+echo '<a href="?do=p_shop_delete&sname='.$sname.'"><button type="button">店舗情報の削除</button></a>';
 while ($row) {
 	//$r  = $row['urole'];// ユーザ種別コード取得（数字）
 	$_SESSION['sid']   = $row['sid'];
