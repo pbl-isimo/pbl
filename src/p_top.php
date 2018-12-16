@@ -85,7 +85,7 @@ $row = mysql_fetch_array ( $rs );
 
 while ($row){
 	$sid = $row['sid'];
-	$sql1 ="select rpoint from tb_review where sid='$sid'";
+	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
 	$rs1 = mysql_query ( $sql1, $conn );
 	$row1 = mysql_fetch_array ( $rs1 );
 
@@ -95,10 +95,11 @@ while ($row){
 	 * $row2 = mysql_fetch_array ( $rs );
 	 * var_dump ( $row2 );
 	 */
-	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '&sid=' . $row ['sid'] . '">' . $row ['sname'] . '</a>　　';
+	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '&sid=' . $row ['sid'] .
+	'&rpoint=' . $row1 ['AVG'] .'">' . $row ['sname'] . '</a>　　';
 	// echo '評価数' . $row ['rpoint'] . '<br>';
 	for($i = 0; $i < 5; $i ++) {
-		if ($i < $row1 ['rpoint']) {
+		if ($i < $row1 ['AVG']) {
 			echo '★';
 		} else {
 			echo '☆';

@@ -1,7 +1,7 @@
 <?php
 require_once ('db_inc.php');
 $sname = $_GET ['sname'];
-//$sid = $_GET ['sid'];
+$rpoint = $_GET ['rpoint'];
 $uid = $_SESSION ['uid'];
 $sql = "SELECT sid,sname,address,open,close,time,budget,holiday,uid
 		From tb_shop
@@ -13,10 +13,11 @@ $row = mysql_fetch_array ( $rs );
 $s_uid = $row ['uid'];
 $sid = $row['sid'];
 
-$sql_a = "select rpoint from tb_review where uid = '$uid'";
+/*
+$sql_a = "select rpoint from tb_review where sid = '$sid'";
 $rs_a = mysql_query ( $sql_a, $conn );
 $row_a = mysql_fetch_array ( $rs_a );
-
+*/
 
 $sql0 = "SELECT uid,uid_kind FROM tb_user WHERE uid = '$uid'";
 $rs0 = mysql_query ( $sql0 );
@@ -25,7 +26,7 @@ $uid_kind = $row0 ['uid_kind'];
 // $sname = $row['sname'];
 echo '<h1>' . $sname;
 for($i = 0; $i < 5; $i ++) {
-	if ($i < $row_a ['rpoint']) {
+	if ($i < $rpoint) {
 		echo '★';
 	} else {
 		echo '☆';
