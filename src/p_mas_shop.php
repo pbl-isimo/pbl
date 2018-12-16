@@ -20,7 +20,7 @@
     echo '<td>'.$row['sname'].'</td>';
 
     echo '<td>';
-    echo '<form action="?do=p_shop_edit" method="post">';
+    echo '<form action="?do=p_shop_edit&sname='.$row['sname'].'" method="post">';
 		echo '<input type="submit" value="edit">';
 		echo '<input type="hidden" name="id" value="'.$row['sid'].'">';
     echo '</form>';
