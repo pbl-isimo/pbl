@@ -7,18 +7,15 @@
 <?php
 require_once ('src/db_inc.php');
 // phpinfo();
-
 $sql2="SELECT * FROM tb_shop ORDER BY RAND() LIMIT 1";
 $rs2 = mysql_query ( $sql2, $conn );
 // var_dump ( $rs);
 $row = mysql_fetch_array ( $rs2 );
-
 while ($row){
 	$sid = $row['sid'];
 	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
 	$rs1 = mysql_query ( $sql1, $conn );
 	$row1 = mysql_fetch_array ( $rs1 );
-
 	//$row = mysql_fetch_array ( $rs );
 	/*
 	 * var_dump ( $row3 );
@@ -44,9 +41,7 @@ while ($row){
 	echo '予算：' . $row ['budget'] . '～<br><br><br>';
 	$row = mysql_fetch_array ( $rs );
 	//$row1 = mysql_fetch_array ( $rs1 );
-
 }
-
 ?>
 <?php
 require_once ('src/db_inc.php');
@@ -62,7 +57,6 @@ $rs4 = mysql_query ( $sql4, $conn );
 // var_dump ( $rs);
 $row = mysql_fetch_array ($rs4);
 $res = mysql_query($sql) or die('query error' . mysql_error());
-
 ?>
 
 
@@ -79,7 +73,6 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
  	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
  	$rs1 = mysql_query ( $sql1, $conn );
  	$row1 = mysql_fetch_array ( $rs1 );
-
  	//$row = mysql_fetch_array ( $rs );
  	/*
  	 * var_dump ( $row3 );
@@ -104,7 +97,6 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
  	echo '予算：' . $row ['budget'] . '～<br><br><br>';
  	$row = mysql_fetch_array ( $rs4 );
  	//$row1 = mysql_fetch_array ( $rs1 );
-
  }
  ?>
 
@@ -142,13 +134,13 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
 <?php
 echo '<form>';
 echo '<select onChange="top.location.href=value">';
+echo '<option value="">ソート</option>';
 echo '<option value="?do=p_search_result_rpoint">評価が高い順</option>';
 echo '<option value="?do=p_search_result_time_early">所要時間が短い順</option>';
 echo '<option value="?do=p_search_result_budget_low">予算が少ない順</option>';
 echo '<option value="?do=p_search_result_budget_high">予算が多い順</option>';
 echo '</select>';
 echo '</form>';
-
 ?>
 <br>
 <br>
@@ -160,19 +152,16 @@ echo '</form>';
 <?php
 $sql = "
 			SELECT * FROM tb_shop
-
 			"; // sidは他の選択も出来るように
 $rs = mysql_query ( $sql, $conn );
 // var_dump ( $rs);
 $row = mysql_fetch_array ( $rs );
 $res = mysql_query($sql) or die('query error' . mysql_error());
-
 while ($row){
 	$sid = $row['sid'];
 	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
 	$rs1 = mysql_query ( $sql1, $conn );
 	$row1 = mysql_fetch_array ( $rs1 );
-
 	//$row = mysql_fetch_array ( $rs );
 	/*
 	 * var_dump ( $row3 );
@@ -197,7 +186,6 @@ while ($row){
 	echo '予算：' . $row ['budget'] . '～<br><br><br>';
 	$row = mysql_fetch_array ( $rs );
 	//$row1 = mysql_fetch_array ( $rs1 );
-
 }
 ?>
 </center>
