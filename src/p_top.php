@@ -1,4 +1,5 @@
-﻿<body bgcolor="#FFDBC9">
+﻿<center>
+<body bgcolor="#FFDBC9">
 	ここは
 	<a href="?do=p_top">【トップページ】</a> です。
 	<br>
@@ -64,11 +65,11 @@ $(document).ready(function(){
 	});
 </script>
 		</head>
-		<input type="submit" name="btng" value="検索"> <br>
+		<input type="submit" name="btng" value="検索" class="btn btn-info btn-xs"> <br>
 		<center>
 			<option value="" selected>絞り込み ▼</option>
 			<div
-				style="padding: 10px; margin-bottom: 10px; width: 450px; height: 70px; border: 1px solid #333333; border-radius: 10px; background-color: #FFFFFF;">
+				style="padding: 10px; margin-bottom: 10px; width: 450px; height: 100px; border: 1px solid #333333; border-radius: 10px; background-color: #FFFFFF;">
 				<div body="text-align: center;">
 					<font size="3">営業日&nbsp</font> 月<input type="checkbox"
 						name="holiday" value="getu">&nbsp 火<input type="checkbox"
