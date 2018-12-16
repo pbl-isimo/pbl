@@ -10,6 +10,7 @@ if (isset($_GET['sname'])){
    mysql_query($sql, $conn);
    //header('Location:?do=p_top');
    echo '<h2>店舗が削除されました</h2>';
+   echo '<a href="?do=p_top">戻る</a>';
 }else{
   echo '<h2>削除するユーザIDは与えられていません</h2>';
 }
