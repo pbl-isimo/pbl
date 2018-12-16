@@ -117,7 +117,7 @@ $sql3 = "SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left
 $rs3 = mysql_query ( $sql3, $conn );
 // if (!$rs) die ('エラー: ' . mysql_error());
 $row3 = mysql_fetch_array ( $rs3 );
-$rid = $row3['rid'];
+
 while ( $row3 ) {
 	echo '<b>' . $row3 ['uname'] . '</b>';
 	for($i = 0; $i < 5; $i ++) {
@@ -127,6 +127,7 @@ while ( $row3 ) {
 			echo '☆';
 		}
 	}
+	$rid = $row3['rid'];
 	echo '<br>' . $row3 ['comment'];
 	echo '<br><a href="?do=p_review_detail&rid='.$rid.'">もっと見る</a><br>';
 	$row3 = mysql_fetch_array ( $rs3 );
