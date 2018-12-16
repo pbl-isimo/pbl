@@ -1,4 +1,4 @@
-﻿<body bgcolor="#FFDBC9">
+<body bgcolor="#FFDBC9">
 	ここは
 	<a href="?do=p_top">【トップページ】</a> です。
 	<br>
@@ -103,30 +103,31 @@ echo '<a href="?do=p_search_result_budget_low">予算が少ない順</a>　</td>
 echo '<a href="?do=p_search_result_budget_high">予算が多い順</a>　</td>';
 
 /*
-echo '
+ echo '
 
-<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script>
-$(document).ready(function(){
-	  $("#sel").change(function(){
-	    //var str = $(this).val();
-	    window.location.href = $(this).val();
-	    //alert(str);
-	  });
-	});
-</script>
-</head>
-<select id="sel">
+ <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <script>
+ $(document).ready(function(){
+ $("#sel").change(function(){
+ //var str = $(this).val();
+ window.location.href = $(this).val();
+ //alert(str);
+ });
+ });
+ </script>
+ </head>
+ <select id="sel">
 
-	<option value="high hyouka" selected>評価が高い</option>
-	<option value="?do=p_search_result" selected>評価が高い</option>
-	<option value="do=p_search_result2">所要時間が短い</option>
-	<option value="do=p_search_result3">予算が少ない</option>
-	<option value="do=p_search_result4">予算が多い</option>
-</select>
-<input type="hidden" name="hl" value="ja">
-</form>
-';*/
+ <option value="high hyouka" selected>評価が高い</option>
+ <option value="?do=p_search_result" selected>評価が高い</option>
+ <option value="do=p_search_result2">所要時間が短い</option>
+ <option value="do=p_search_result3">予算が少ない</option>
+ <option value="do=p_search_result4">予算が多い</option>
+ </select>
+ <input type="hidden" name="hl" value="ja">
+ </form>
+ ';*/
+
 ?>
 <br>
 <br>
@@ -134,7 +135,7 @@ $(document).ready(function(){
 
 <?php
 $sql = "
-			SELECT * FROM tb_shop
+			SELECT * FROM tb_shop ORDER BY budget DESC
 
 			"; // sidは他の選択も出来るように
 $rs = mysql_query ( $sql, $conn );

@@ -1,4 +1,4 @@
-﻿<body bgcolor="#FFDBC9">
+<body bgcolor="#FFDBC9">
 	ここは
 	<a href="?do=p_top">【トップページ】</a> です。
 	<br>
@@ -134,7 +134,7 @@ $(document).ready(function(){
 
 <?php
 $sql = "
-			SELECT * FROM tb_shop
+			SELECT * FROM tb_shop Natural Left Join tb_review ORDER BY rpoint DESC
 
 			"; // sidは他の選択も出来るように
 $rs = mysql_query ( $sql, $conn );
