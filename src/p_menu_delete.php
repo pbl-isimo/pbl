@@ -21,5 +21,6 @@ if (isset ( $_GET ['mid'] )) {
 	mysql_query ( $sql );
 	// header('Location:?do=p_top');
 	echo '<h2>メニューが削除されました</h2>';
+	echo '<a href="?do=p_top">戻る</a>';
 }
 ?>
