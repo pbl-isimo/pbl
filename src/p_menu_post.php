@@ -33,6 +33,7 @@ echo "メニューid".$mid;
 $sql1="INSERT INTO `tb_menu`(`sid`, `item`, `price`, `mid`, `mcontents`)
 		VALUES ('$sid','$name','$price','$mid','$contents')";
 $rs1 = mysql_query ( $sql1, $conn );
-header( "Location:?do=p_shop_refer&sname='$sname'&sid='$sid'") ;
+header( "Location:?do=p_top") ;
+//header( "Location:?do=p_shop_refer&sname='$sname'&sid='$sid'") ;
 //header( "Location: https://blog.codecamp.jp/color_pattern" ) ;
 ?>
