@@ -2,11 +2,12 @@
 require_once('src/db_inc.php');
 $uid=$_SESSION['uid'];
 $sid=$_SESSION['sid'];
+$sname = $_GET['sname'];
 
 
 $sql="SELECT sname,address,open,close,holiday,budget,time,uid
 FROM tb_shop NATURAL LEFT JOIN tb_user
-WHERE sid='{$sid}'";
+WHERE sname='{$sname}'";
 
 $rs = mysql_query ( $sql,$conn);
 $row = mysql_fetch_array ( $rs );
