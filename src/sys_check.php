@@ -1,24 +1,18 @@
+<center>
+<div class="container">
 <form action="?do=sys_check" method="post" class="form">
-<table class="table table-hover">
-	<tr>
-		<td><input type="text" name="uid" class="form-control"
-			style="position: absolute; left: 45%; top: 48%"></td>
-	</tr>
-	<tr>
-		<td><input type="password" name="psword" class="form-control"
-			style="position: absolute; left: 45%; top: 54%"></td>
-	</tr>
-</table>
-<input type="submit" value="　　ロ　グ　イ　ン　　" class="btn btn-primary"
-	style="position: absolute; left: 45%; top: 60%">
+<table class="table table-bordered">
+
+	<tr><td><input type="text" name="uid" class="form-control"placeholder="ユーザID"></td></tr>
+	<tr><td><input type="password" name="psword" class="form-control"placeholder="パスワード"></td></tr>
+	<tr><td><div class="text-center"><input type="submit" value="　　ロ　グ　イ　ン　　" class="btn btn-primary"></div></td></tr>
+
+	</table>
 </form>
 <?php
   require_once('inc.php'); //データベースが必要なので読み込ませる
   $u = $_POST['uid'] ;
   $p = $_POST['psword'];
- // echo $u;
- // echo $p;
-  echo "Hello";
 
   $sql = "
   SELECT * FROM tb_user
@@ -43,3 +37,5 @@
 	echo "ログインに失敗しました。";
   }
 ?>
+</div>
+</center>
