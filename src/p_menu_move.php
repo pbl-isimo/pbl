@@ -21,13 +21,15 @@ while($i<=$mid_max){
 		SET `sid`='$sid',`item`='$name',
 			`price`='$price',`mid`='$i',
 			`mcontents`='$contents'
-			where mid='$i'";
+			where mid='$i'
+			and sid='$sid'";
 	}
 	$rs = mysql_query ( $sql, $conn );
 	//$num = mysql_fetch_array ( $rs );
 	$i++;
 }
 //戻る　
-header( "Location:?do=p_shop_refer&sname='$sname'&sid='$sid'") ;
+header( "Location:?do=p_top") ;
+//header( "Location:?do=p_shop_refer&sname='$sname'&sid='$sid'") ;
 //echo '<form action="?do=p_menu_edit&sname='.$sname.'&sid='.$sid.'" ></form>';
 ?>
