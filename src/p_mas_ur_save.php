@@ -6,7 +6,7 @@ if (isset ( $_POST ['act'] )) {
 	$uid = $_POST ['uid'];
 	$uname = $_POST ['uname'];
 	$type = $_POST ['type'];
-	$old_ps = $_POST['old_ps'];
+
 
 	$sql="select psword from tb_user where uid = '$uid'";
 	$rs  = mysql_query ( $sql, $conn );
@@ -14,6 +14,7 @@ if (isset ( $_POST ['act'] )) {
 	$cur_ps = $row['psword'];
 
 	if($act == 'update'){
+		$old_ps = $_POST['old_ps'];
 		if ($old_ps === $cur_ps){
 			if ($_POST ['new_ps1'] === $_POST ['new_ps2']) {
 				$old_ps = $_POST ['old_ps'];
