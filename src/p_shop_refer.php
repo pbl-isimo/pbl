@@ -24,7 +24,8 @@ $rs0 = mysql_query ( $sql0 );
 $row0 = mysql_fetch_array ( $rs0 );
 $uid_kind = $row0 ['uid_kind'];
 // $sname = $row['sname'];
-echo '<h1>' . $sname;
+echo '<h1>' . $sname.'<br>';
+echo '<h1>評価:';
 for($i = 0; $i < 5; $i ++) {
 	if ($i < $rpoint) {
 		echo '★';
@@ -56,6 +57,7 @@ echo '</form>';
 while ( $row ) {
 	// $r = $row['urole'];// ユーザ種別コード取得（数字）
 	$_SESSION ['sid'] = $row ['sid'];
+	echo '<center>';
 	echo '<table border=1>';
 	// echo '<tr>';
 	// echo '<tr><td>' .'店舗名'.'</td><td>'. $row['comment'] . '</td></tr>'; // ユーザ種別コードを名称に変換（連想配列利用）
@@ -68,6 +70,7 @@ while ( $row ) {
 	// echo '</tr>';
 	// $n++;
 	echo '</table>';
+	echo '</center>';
 	echo '<br>';
 	// echo'<h2>メニュー</h2>';
 	$row = mysql_fetch_array ( $rs );
@@ -79,6 +82,7 @@ $item = $row2['item'];
 // $num=mysql_num_rows( $rs2 );
 if (! $rs2)
 	die ( 'エラー: ' . mysql_error () );
+echo '<center>';
 echo '<table border=1>';
 echo "<tr><th>メニュー</th><th>値段</th><th>説明</th></tr>";
 while ( $row2 ) {
@@ -90,6 +94,8 @@ while ( $row2 ) {
 	$row2 = mysql_fetch_array ( $rs2 );
 }
 echo '</table>';
+echo '</center>';
+echo '<br>';
 if ($uid_kind == 0 || $uid_kind == 1) {
 	//if ($uid_kind == 0 || $s_uid == $uid) {
 	echo '<form action="?do=p_menu_refer&sname=' . $sname . '&sid='.$sid.'" method="post">';
