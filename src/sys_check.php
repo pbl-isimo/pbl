@@ -31,10 +31,10 @@
     $_SESSION['login']=1;
     header('Location:p_index.php');
   }else{//ログイン失敗
-	echo "ログイン失敗".'<br>';
+	//echo "ログイン失敗".'<br>';
 	$_SESSION['login']=2;
     //header('Location:?do=sys_check');
-	echo "ログインに失敗しました。";
+	echo "ログインに失敗しました";
   }
 ?>
 </div>
