@@ -74,6 +74,7 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
 
 
  <?php
+ /*
  while ($row){
  	$sid = $row['sid'];
  	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
@@ -85,7 +86,7 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
  	 * var_dump ( $row3 );
  	 * $row2 = mysql_fetch_array ( $rs );
  	 * var_dump ( $row2 );
- 	*/
+
  	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '&sid=' . $row ['sid'] .
  	'&rpoint=' . $row1 ['AVG'] .'">' . $row ['sname'] . '</a>　　';
  	// echo '評価数' . $row ['rpoint'] . '<br>';
@@ -106,6 +107,7 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
  	//$row1 = mysql_fetch_array ( $rs1 );
 
  }
+ */
  ?>
 
 		<center>

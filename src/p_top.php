@@ -150,6 +150,7 @@ echo '</form>';
 
 
 <?php
+/*
 $sql = "
 			SELECT * FROM tb_shop
 			"; // sidは他の選択も出来るように
@@ -167,7 +168,7 @@ while ($row){
 	 * var_dump ( $row3 );
 	 * $row2 = mysql_fetch_array ( $rs );
 	 * var_dump ( $row2 );
-	 */
+
 	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '&sid=' . $row ['sid'] .
 	'&rpoint=' . $row1 ['AVG'] .'">' . $row ['sname'] . '</a>　　';
 	// echo '評価数' . $row ['rpoint'] . '<br>';
@@ -186,7 +187,7 @@ while ($row){
 	echo '予算：' . $row ['budget'] . '～<br><br><br>';
 	$row = mysql_fetch_array ( $rs );
 	//$row1 = mysql_fetch_array ( $rs1 );
-}
+}*/
 ?>
 </center>
 	</div>
