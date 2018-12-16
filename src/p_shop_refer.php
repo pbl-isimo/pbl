@@ -1,3 +1,5 @@
+<center>
+<div class="container">
 <?php
 require_once ('db_inc.php');
 $sname = $_GET ['sname'];
@@ -24,8 +26,9 @@ $rs0 = mysql_query ( $sql0 );
 $row0 = mysql_fetch_array ( $rs0 );
 $uid_kind = $row0 ['uid_kind'];
 // $sname = $row['sname'];
-echo '<h1>' . $sname.'<br>';
-echo '<h1>評価:';
+echo '<br><h1>' . $sname.'<br>'.'</h1>';
+
+echo '<h3>評価';
 for($i = 0; $i < 5; $i ++) {
 	if ($i < $rpoint) {
 		echo '★';
@@ -34,15 +37,15 @@ for($i = 0; $i < 5; $i ++) {
 	}
 }
 // 各種ボタン
-'</h1>';
+'</h3>';
 if ($uid_kind == 0 || $uid_kind == 1) {
 	//if ($uid_kind == 0 || $s_uid == $uid) {
 		echo '<form action="?do=p_shop_edit&sname=' . $sname . '" method="post">';
-		echo '<input type="submit" onclick="location.href="p_shop_edit&sname=' . $sname . '" " value="店舗編集" />';
+		echo '<input type="submit" onclick="location.href="p_shop_edit&sname=' . $sname . '" " value="店舗編集" / class="btn btn-info btn-sm">';
 		echo '</form>';
 		if ($uid_kind == 0 || $s_uid == $uid) {
 		echo '<form action="?do=p_shop_delete&sname=' . $sname . '" method="post">';
-		echo '<input type="submit" onclick="location.href="p_shop_delete&sname=' . $sname . '" " value="店舗削除" />';
+		echo '<input type="submit" onclick="location.href="p_shop_delete&sname=' . $sname . '" " value="店舗削除" / class="btn btn-danger btn-sm">';
 		echo '</form>';
 	}
 }
@@ -58,7 +61,7 @@ while ( $row ) {
 	// $r = $row['urole'];// ユーザ種別コード取得（数字）
 	$_SESSION ['sid'] = $row ['sid'];
 	echo '<center>';
-	echo '<table border=1>';
+	echo '<table class="table table-bordered">';
 	// echo '<tr>';
 	// echo '<tr><td>' .'店舗名'.'</td><td>'. $row['comment'] . '</td></tr>'; // ユーザ種別コードを名称に変換（連想配列利用）
 	echo '<tr><td>' . '営業時間' . '</td><td>' . $row ['open'] . '～' . $row ['close'] . '</td></tr>';
@@ -85,7 +88,7 @@ $item = $row2['item'];
 if (! $rs2)
 	die ( 'エラー: ' . mysql_error () );
 echo '<center>';
-echo '<table border=1>';
+echo '<table class="table table-bordered">';
 echo "<tr><th>メニュー</th><th>値段</th><th>説明</th></tr>";
 while ( $row2 ) {
 //	$_SESSION ['sid'] = $row2 ['sid'];
@@ -97,19 +100,20 @@ while ( $row2 ) {
 }
 echo '</table>';
 echo '</center>';
-echo '<br>';
+
 if ($uid_kind == 0 || $uid_kind == 1) {
 	//if ($uid_kind == 0 || $s_uid == $uid) {
 	echo '<form action="?do=p_menu_refer&sname=' . $sname . '&sid='.$sid.'" method="post">';
-	echo '<input type="submit" onclick="location.href="p_menu_refer&sname=' . $sname .'&sid='.$sid. '" value="メニュー追加" />';
+	echo '<input type="submit" onclick="location.href="p_menu_refer&sname=' . $sname .'&sid='.$sid. '" value="メニュー追加" / class="btn btn-info btn-sm">';
 	echo '</form>';
 		//}
 	}
+	echo '<br>';
 echo '<h2>口コミ</h2>';
 if ($uid_kind == 0 || $uid_kind == 1) {
 	//if ($uid_kind == 0 || $s_uid == $uid) {
 echo '<form action="?do=p_review_record&sname=' . $_GET ['sname'] . '" method="post">';
-echo '<input type="submit" onclick="location.href="p_review_record&sname=' . $_GET ['sname'] . '" " value="口コミ投稿" />';
+echo '<input type="submit" onclick="location.href="p_review_record&sname=' . $_GET ['sname'] . '" " value="口コミ投稿" / class="btn btn-info btn-sm">';
 echo '</form>';
 	//}
 }
@@ -119,7 +123,8 @@ $rs3 = mysql_query ( $sql3, $conn );
 $row3 = mysql_fetch_array ( $rs3 );
 
 while ( $row3 ) {
-	echo '<b>' . $row3 ['uname'] . '</b>';
+	echo '<table class="table table-bordered">';
+	echo '<tr><td><b>' . $row3 ['uname'] . '</b>';
 	for($i = 0; $i < 5; $i ++) {
 		if ($i < $row3 ['rpoint']) {
 			echo '★';
@@ -129,7 +134,9 @@ while ( $row3 ) {
 	}
 	$rid = $row3['rid'];
 	echo '<br>' . $row3 ['comment'];
-	echo '<br><a href="?do=p_review_detail&rid='.$rid.'">もっと見る</a><br>';
+	echo '<br><div class="text-right"><a href="?do=p_review_detail&rid='.$rid.'">もっと見る</a></div><br></td></tr>';
 	$row3 = mysql_fetch_array ( $rs3 );
 }
 ?>
+</div>
+</center>

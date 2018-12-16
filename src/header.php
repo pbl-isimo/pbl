@@ -1,32 +1,25 @@
 ﻿<!DOCTYPE html>
 <html lang="ja">
-<meta http-equiv="Content-TYPE" content="text/html; charset=UTF-8">
-<style>
-body {
-	text-align: center;
-}
+<center>
+<div class="container-fluid bg-light">
 
-div#center {
-	width: 1500px;
-	height: 180px;
-	text-align: left;
-	background: #FF9933;
-	margin: auto;
-}
 
-h1 {
-	text-align: center;
-}
-・・・省略・・・
-</style>
-</head>
-<body>
-	<div id="center">
-		<a href="p_index.php"> <img src="img/pitarogo.png" width="300"
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <a href="p_index.php"> <img src="img/pitarogo.png" width="300"
 			height="200"></a>
-	</div>
-</body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
 <?php
 require_once ('src/db_inc.php');
 if (isset ( $_SESSION ['uid_kind'] )) {
@@ -139,3 +132,6 @@ $(document).ready(function(){
 	// echo '<a href="?do=sys_check">ログイン</a>　　　';
 }
 ?>
+</div>
+  </center>
+</html>

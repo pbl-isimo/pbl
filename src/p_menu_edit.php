@@ -1,3 +1,5 @@
+<div class="container">
+<center>
 <?php
 $sname=$_GET ['sname'];
 echo '<h1>'.$sname.'</h1>';
@@ -35,4 +37,5 @@ if (! empty ( $row )) {
 </form>
 <br>
 <br>
-
+</center>
+</div>
