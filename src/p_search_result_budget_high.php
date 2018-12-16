@@ -1,3 +1,4 @@
+<center>
 <body bgcolor="#FFDBC9">
 	ここは
 	<a href="?do=p_top">【トップページ】</a> です。
@@ -47,28 +48,70 @@ while ($row){
 }
 
 ?>
+<?php
+require_once ('src/db_inc.php');
+if(isset($_GET['search'])){
+	$search=htmlspecialchars($_GET['search']);
+	$search_value=$search;
+}else{
+	$search='';
+	$search_value='';
+}
+$sql4="SELECT * FROM tb_shop where sname LIKE '%$search%'";
+$rs4 = mysql_query ( $sql4, $conn );
+// var_dump ( $rs);
+$row = mysql_fetch_array ($rs4);
+$res = mysql_query($sql) or die('query error' . mysql_error());
 
-<form method="get"
-	action="http://localhost/PBL3/src/p_search_result.php?do=p_search_result"
-	target="_blank">
-	<input type="text" name="q" size="31" maxlength="255" value="">
-	<head>
-<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script>
-$(document).ready(function(){
-	  $("#sel").change(function(){
-	    //var str = $(this).val();
-	    window.location.href = $(this).val();
-	    //alert(str);
-	  });
-	});
-</script>
-		</head>
-		<input type="submit" name="btng" value="検索"> <br>
+?>
+
+
+ <form action="" method="get">
+       <p>検索</p>
+       <input type="text" name="search" value="<?php echo $search_value ?>"><br>
+       <input type="submit" name="" value="検索">
+     </form>
+
+
+ <?php
+ while ($row){
+ 	$sid = $row['sid'];
+ 	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
+ 	$rs1 = mysql_query ( $sql1, $conn );
+ 	$row1 = mysql_fetch_array ( $rs1 );
+
+ 	//$row = mysql_fetch_array ( $rs );
+ 	/*
+ 	 * var_dump ( $row3 );
+ 	 * $row2 = mysql_fetch_array ( $rs );
+ 	 * var_dump ( $row2 );
+ 	*/
+ 	echo '<h2><a href="?do=p_shop_refer&sname=' . $row ['sname'] . '&sid=' . $row ['sid'] .
+ 	'&rpoint=' . $row1 ['AVG'] .'">' . $row ['sname'] . '</a>　　';
+ 	// echo '評価数' . $row ['rpoint'] . '<br>';
+ 	for($i = 0; $i < 5; $i ++) {
+ 		if ($i < $row1 ['AVG']) {
+ 			echo '★';
+ 		} else {
+ 			echo '☆';
+ 		}
+ 	}
+ 	echo '</h2>';
+ 	// echo $row ['rpoint'];
+ 	echo '営業時間　' . $row ['open'] . '～' . $row ['close'] . '<br>';
+ 	echo '定休日：' . $row ['holiday'] . '<br>';
+ 	echo '所要時間：徒歩' . $row ['time'] . '分<br>';
+ 	echo '予算：' . $row ['budget'] . '～<br><br><br>';
+ 	$row = mysql_fetch_array ( $rs4 );
+ 	//$row1 = mysql_fetch_array ( $rs1 );
+
+ }
+ ?>
+
 		<center>
 			<option value="" selected>絞り込み ▼</option>
 			<div
-				style="padding: 10px; margin-bottom: 10px; width: 450px; height: 70px; border: 1px solid #333333; border-radius: 10px; background-color: #FFFFFF;">
+				style="padding: 10px; margin-bottom: 10px; width: 450px; height: 100px; border: 1px solid #333333; border-radius: 10px; background-color: #FFFFFF;">
 				<div body="text-align: center;">
 					<font size="3">営業日&nbsp</font> 月<input type="checkbox"
 						name="holiday" value="getu">&nbsp 火<input type="checkbox"
@@ -99,46 +142,25 @@ $(document).ready(function(){
 <?php
 echo '<form>';
 echo '<select onChange="top.location.href=value">';
+echo '<option value="">ソート</option>';
 echo '<option value="?do=p_search_result_rpoint">評価が高い順</option>';
 echo '<option value="?do=p_search_result_time_early">所要時間が短い順</option>';
 echo '<option value="?do=p_search_result_budget_low">予算が少ない順</option>';
-echo '<option value="?do=p_search_result_budget_high" selected>予算が多い順</option>';
+echo '<option value="?do=p_search_result_budget_high">予算が多い順</option>';
 echo '</select>';
 echo '</form>';
-/*
- echo '
-
- <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
- <script>
- $(document).ready(function(){
- $("#sel").change(function(){
- //var str = $(this).val();
- window.location.href = $(this).val();
- //alert(str);
- });
- });
- </script>
- </head>
- <select id="sel">
-
- <option value="high hyouka" selected>評価が高い</option>
- <option value="?do=p_search_result" selected>評価が高い</option>
- <option value="do=p_search_result2">所要時間が短い</option>
- <option value="do=p_search_result3">予算が少ない</option>
- <option value="do=p_search_result4">予算が多い</option>
- </select>
- <input type="hidden" name="hl" value="ja">
- </form>
- ';*/
 
 ?>
 <br>
 <br>
 <tr>
 
+
+
+
 <?php
 $sql = "
-			SELECT * FROM tb_shop ORDER BY budget DESC
+		SELECT * FROM tb_shop ORDER BY budget DESC
 
 			"; // sidは他の選択も出来るように
 $rs = mysql_query ( $sql, $conn );

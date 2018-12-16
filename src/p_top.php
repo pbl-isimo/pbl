@@ -64,11 +64,14 @@ $row = mysql_fetch_array ($rs4);
 $res = mysql_query($sql) or die('query error' . mysql_error());
 
 ?>
+
+
  <form action="" method="get">
        <p>検索</p>
        <input type="text" name="search" value="<?php echo $search_value ?>"><br>
        <input type="submit" name="" value="検索">
      </form>
+
 
  <?php
  while ($row){
@@ -99,11 +102,12 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
  	echo '定休日：' . $row ['holiday'] . '<br>';
  	echo '所要時間：徒歩' . $row ['time'] . '分<br>';
  	echo '予算：' . $row ['budget'] . '～<br><br><br>';
- 	$row = mysql_fetch_array ( $rs );
+ 	$row = mysql_fetch_array ( $rs4 );
  	//$row1 = mysql_fetch_array ( $rs1 );
 
  }
  ?>
+
 		<center>
 			<option value="" selected>絞り込み ▼</option>
 			<div
@@ -144,35 +148,14 @@ echo '<option value="?do=p_search_result_budget_low">予算が少ない順</opti
 echo '<option value="?do=p_search_result_budget_high">予算が多い順</option>';
 echo '</select>';
 echo '</form>';
-/*
-echo '
 
-<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script>
-$(document).ready(function(){
-	  $("#sel").change(function(){
-	    //var str = $(this).val();
-	    window.location.href = $(this).val();
-	    //alert(str);
-	  });
-	});
-</script>
-</head>
-<select id="sel">
-
-	<option value="high hyouka" selected>評価が高い</option>
-	<option value="?do=p_search_result" selected>評価が高い</option>
-	<option value="do=p_search_result2">所要時間が短い</option>
-	<option value="do=p_search_result3">予算が少ない</option>
-	<option value="do=p_search_result4">予算が多い</option>
-</select>
-<input type="hidden" name="hl" value="ja">
-</form>
-';*/
 ?>
 <br>
 <br>
 <tr>
+
+
+
 
 <?php
 $sql = "
