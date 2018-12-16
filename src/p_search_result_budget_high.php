@@ -1,5 +1,5 @@
 <center>
-<body bgcolor="#FFDBC9">
+<div class="container">
 	ここは
 	<a href="?do=p_top">【トップページ】</a> です。
 	<br>
@@ -14,6 +14,9 @@ $rs2 = mysql_query ( $sql2, $conn );
 $row = mysql_fetch_array ( $rs2 );
 
 while ($row){
+	echo '<table class="table table-bordered">';
+	echo '<tr><td>';
+	echo '<center>';
 	$sid = $row['sid'];
 	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
 	$rs1 = mysql_query ( $sql1, $conn );
@@ -41,13 +44,16 @@ while ($row){
 	echo '営業時間　' . $row ['open'] . '～' . $row ['close'] . '<br>';
 	echo '定休日：' . $row ['holiday'] . '<br>';
 	echo '所要時間：徒歩' . $row ['time'] . '分<br>';
-	echo '予算：' . $row ['budget'] . '～<br><br><br>';
+	echo '予算：' . $row ['budget'] . '～<br>';
 	$row = mysql_fetch_array ( $rs );
 	//$row1 = mysql_fetch_array ( $rs1 );
-
+	echo '</center>';
+	echo '</tr></td>';
+	echo '</table>';
 }
 
 ?>
+<br><br><br>
 <?php
 require_once ('src/db_inc.php');
 if(isset($_GET['search'])){
@@ -67,9 +73,8 @@ $res = mysql_query($sql) or die('query error' . mysql_error());
 
 
  <form action="" method="get">
-       <p>検索</p>
-       <input type="text" name="search" value="<?php echo $search_value ?>"><br>
-       <input type="submit" name="" value="検索">
+       <input type="text" name="search" value="<?php echo $search_value ?>"placeholder="キーワード"">
+       <input type="submit" name="" value="検索" class="btn btn-info btn-sm">
      </form>
 
 
@@ -152,7 +157,6 @@ echo '</form>';
 
 ?>
 <br>
-<br>
 <tr>
 
 
@@ -169,6 +173,9 @@ $row = mysql_fetch_array ( $rs );
 $res = mysql_query($sql) or die('query error' . mysql_error());
 
 while ($row){
+	echo '<table class="table table-bordered">';
+	echo '<tr><td>';
+	echo '<center>';
 	$sid = $row['sid'];
 	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
 	$rs1 = mysql_query ( $sql1, $conn );
@@ -195,10 +202,12 @@ while ($row){
 	echo '営業時間　' . $row ['open'] . '～' . $row ['close'] . '<br>';
 	echo '定休日：' . $row ['holiday'] . '<br>';
 	echo '所要時間：徒歩' . $row ['time'] . '分<br>';
-	echo '予算：' . $row ['budget'] . '～<br><br><br>';
+	echo '予算：' . $row ['budget'] . '～<br>';
 	$row = mysql_fetch_array ( $rs );
 	//$row1 = mysql_fetch_array ( $rs1 );
-
+	echo '</center>';
+	echo '</tr></td>';
+	echo '</table>';
 }
 ?>
 </center>

@@ -1,4 +1,6 @@
-﻿<meta http-equiv="Content-TYPE" content="text/html; charset=UTF-8">
+﻿<center>
+<div class="container">
+<meta http-equiv="Content-TYPE" content="text/html; charset=UTF-8">
 ここは
 <a href="?do=p_search_result">検索結果表示画面</a>
 です。<br><br>
@@ -24,6 +26,9 @@ $rs = mysql_query ( $sql, $conn );
 $row = mysql_fetch_array ( $rs );
 
 while ($row){
+	echo '<table class="table table-bordered">';
+	echo '<tr><td>';
+	echo '<center>';
 	$sid = $row['sid'];
 	$sql1 ="select round(avg (rpoint),0) as AVG from tb_review where sid='$sid'";
 	$rs1 = mysql_query ( $sql1, $conn );
@@ -43,9 +48,11 @@ while ($row){
 	echo '営業時間　' . $row ['open'] . '～' . $row ['close'] . '<br>';
 	echo '定休日：' . $row ['holiday'] . '<br>';
 	echo '所要時間：徒歩' . $row ['time'] . '分<br>';
-	echo '予算：' . $row ['budget'] . '～<br><br><br>';
+	echo '予算：' . $row ['budget'] . '～<br>';
 	$row = mysql_fetch_array ( $rs );
 	//$row1 = mysql_fetch_array ( $rs1 );
-
+	echo '</center>';
+	echo '</tr></td>';
+	echo '</table>';
 }
 ?>
