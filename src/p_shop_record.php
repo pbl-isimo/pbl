@@ -14,7 +14,20 @@
 
 require_once ('db_inc.php');
 $uid = $_SESSION ['uid'];
-
+$sid_max=0;
+$sql="
+		SELECT * FROM tb_shop";
+$rs = mysql_query ( $sql, $conn );
+$num = mysql_num_rows ( $rs );//データベースに何行有るか
+if($num!=0){//
+	for($j = 1; $j <= $num; $j ++) {//行数分回す
+		$row = mysql_fetch_array ( $rs );
+		if($sid_max<$row['sid']){
+			$sid_max=$row['sid'];
+		}
+	}
+}
+echo '<input type="hidden" name="sid_max" value="'.$sid_max.'">';
 //echo $uid;
 /*
 $sql="INSERT INTO `pbl`.`tb_shop`
