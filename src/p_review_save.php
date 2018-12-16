@@ -44,10 +44,11 @@ $cnon = mysql_close ( $conn );
 if (! $conn) {
 	die ( 'データベースとの接続を閉じられませんでした。' );
 }
+
+//<p>
+		 echo'<a href="?do=p_review_detail&rid='.$rid.'">戻る</a>';
+//	</p>
+//	</body>
 ?>
-<p>
-		<br /> <a href="?do=p_review_detail">戻る</a>
-	</p>
-	</body>
 </form>
 </html>

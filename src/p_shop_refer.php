@@ -3,8 +3,8 @@ require_once ('db_inc.php');
 $sname = $_GET ['sname'];
 //$sid = $_GET ['sid'];
 $uid = $_SESSION ['uid'];
-$sql = "SELECT sid,sname,address,open,close,time,budget,holiday,uid,rpoint,rid,comment,pid,uname
-		From tb_shop natural left join tb_review natural left join tb_user
+$sql = "SELECT sid,sname,address,open,close,time,budget,holiday,uid
+		From tb_shop
 		WHERE sname='$sname'";
 $rs = mysql_query ( $sql, $conn );
 if (! $rs)
@@ -12,6 +12,12 @@ if (! $rs)
 $row = mysql_fetch_array ( $rs );
 $s_uid = $row ['uid'];
 $sid = $row['sid'];
+
+$sql_a = "select rpoint from tb_review where uid = '$uid'";
+$rs_a = mysql_query ( $sql_a, $conn );
+$row_a = mysql_fetch_array ( $rs_a );
+
+
 $sql0 = "SELECT uid,uid_kind FROM tb_user WHERE uid = '$uid'";
 $rs0 = mysql_query ( $sql0 );
 $row0 = mysql_fetch_array ( $rs0 );
@@ -19,7 +25,7 @@ $uid_kind = $row0 ['uid_kind'];
 // $sname = $row['sname'];
 echo '<h1>' . $sname;
 for($i = 0; $i < 5; $i ++) {
-	if ($i < $row ['rpoint']) {
+	if ($i < $row_a ['rpoint']) {
 		echo '★';
 	} else {
 		echo '☆';
@@ -73,7 +79,7 @@ $item = $row2['item'];
 if (! $rs2)
 	die ( 'エラー: ' . mysql_error () );
 echo '<table border=1>';
-echo "<tr><th>メニュー</th></tr>";
+echo "<tr><th>メニュー</th><th>値段</th><th>説明</th></tr>";
 while ( $row2 ) {
 //	$_SESSION ['sid'] = $row2 ['sid'];
 	$mid = $row2['mid'];
@@ -102,6 +108,7 @@ $sql3 = "SELECT sid,rid,rpoint,comment,uid,pid,uname From tb_review Natural left
 $rs3 = mysql_query ( $sql3, $conn );
 // if (!$rs) die ('エラー: ' . mysql_error());
 $row3 = mysql_fetch_array ( $rs3 );
+$rid = $row3['rid'];
 while ( $row3 ) {
 	echo '<b>' . $row3 ['uname'] . '</b>';
 	for($i = 0; $i < 5; $i ++) {
@@ -112,7 +119,7 @@ while ( $row3 ) {
 		}
 	}
 	echo '<br>' . $row3 ['comment'];
-	echo '<br><a href="?do=p_review_detail&uid='.$uid.'">もっと見る</a><br>';
+	echo '<br><a href="?do=p_review_detail&rid='.$rid.'">もっと見る</a><br>';
 	$row3 = mysql_fetch_array ( $rs3 );
 }
 ?>

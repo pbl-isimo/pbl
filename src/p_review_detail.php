@@ -2,11 +2,11 @@
 <?php
 require_once ('db_inc.php');
 $sid = $_SESSION['sid'];
-
+$rid = $_GET['rid'];
 
 $sql = "SELECT uname,rpoint,comment
-From tb_review Natural left join tb_user Natural left join tb_shop
-WHERE sid='$sid'";
+From tb_review natural join tb_user
+WHERE rid='$rid'";
 
 $rs = mysql_query ( $sql );
 $row = mysql_fetch_array ( $rs );
