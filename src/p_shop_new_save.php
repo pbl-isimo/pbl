@@ -41,6 +41,8 @@ if ($sname == "") {
 	// $sql = "UPDATE tb_shop SET sname='$sname',address='$address',open='$open',close ='$close',time ='$time',budget='$budget',holiday='$holiday',uid ='$uid' WHERE sid ='{$sid}'";
 	mysql_query ( $sql1 );
 	echo '<h3>登録されました</h3>';
+
+	echo '<a href="?do=p_shop_refer&sname=' . $sname . '&sid=' . $sid .'">戻る</a>';
 }
 
 // $result_flag = mysql_query($sql);
