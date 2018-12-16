@@ -97,11 +97,14 @@ $(document).ready(function(){
 <br>
 
 <?php
-echo '<a href="?do=p_search_result_rpoint">評価が高い順</a>　</td>';
-echo '<a href="?do=p_search_result_time_early">所要時間が短い順</a>　</td>';
-echo '<a href="?do=p_search_result_budget_low">予算が少ない順</a>　</td>';
-echo '<a href="?do=p_search_result_budget_high">予算が多い順</a>　</td>';
-
+echo '<form>';
+echo '<select onChange="top.location.href=value">';
+echo '<option value="?do=p_search_result_rpoint" selected>評価が高い順</option>';
+echo '<option value="?do=p_search_result_time_early">所要時間が短い順</option>';
+echo '<option value="?do=p_search_result_budget_low">予算が少ない順</option>';
+echo '<option value="?do=p_search_result_budget_high">予算が多い順</option>';
+echo '</select>';
+echo '</form>';
 /*
 echo '
 
