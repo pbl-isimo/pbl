@@ -12,8 +12,11 @@ echo '<h1>ユーザ追加</h1>';
   echo '<tr><td><div class="text-center">パスワード</div></td><td><div class="text-center"><input type="password" name="new_ps"></div></td></tr>';
   echo '<tr><td><div class="text-center">ユーザ種別</div></td><td><div class="text-center">';
   foreach($types as $num => $name){
-    echo '<input type="radio" name="type" value="'.$num.'">'.$name;
-    echo '  ';
+   if($num==1){
+  		echo '<input type="radio" name="type" value="'.$num.'" checked="checked">'.$name;
+  	}else{
+  		echo '<input type="radio" name="type" value="'.$num.'" >'.$name;
+  	}
   }
   echo '</div></td></tr>';
   echo '</table>';
