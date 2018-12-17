@@ -6,7 +6,7 @@ $uid=$_SESSION['uid'];
 $sname=$_GET['sname'];
 
 
-$sql="SELECT sname,address,open,close,holiday,budget,time,uid
+$sql="SELECT sid,sname,address,open,close,holiday,budget,time,uid
 FROM tb_shop NATURAL LEFT JOIN tb_user
 WHERE sname='{$sname}'";
 
@@ -23,6 +23,7 @@ if (! $rs1)
 	*/
 //	if ($row) { // 既存アカウントを編集するために、変数に代入
 		$sname = $row['sname'];
+		$sid = $row['sid'];
 		$address = $row['address'];
 		$holiday = $row['holiday'];
 		$open = $row['open'];
@@ -35,7 +36,7 @@ if (! $rs1)
 ?>
 
 <h2>店舗編集</h2>
-<form action="?do=p_shop_save" method="post">
+<form action="?do=p_shop_save method="post">
 <table class="table table-bordered">
 <tr><td>名前</td><td><input type="text" name="sname" size="20" maxlength="10" value="<?php echo $sname;?>"><br></td></tr>
 <tr><td>住所</td><td><input type="text" name="address" size="70" maxlength="50" value="<?php echo $address;?>"><br></td></tr>
@@ -45,6 +46,7 @@ if (! $rs1)
 <tr><td>所要時間　徒歩　</td><td><input type="text" name="time" size="4" maxlength="2" value="<?php echo $time;?>">分<br></td></tr>
 <tr><td>平均予算</td><td><input type="text" name="budget" size="4" maxlength="5" value="<?php echo $budget;?>">円<br></td></tr>
 </table>
+<input type="hidden" name="sid" value"<?php echo $sid;?>">
 <input type="submit" value="登録" class="btn btn-info btn-sm">
 </form>
 </center>

@@ -18,7 +18,8 @@ $uid = $_SESSION ['uid'];
 
 $sname=$_POST['sname'];
 //echo $sname;
-$sid = $_SESSION['sid'];
+$sid = $_POST['sid'];
+
 //echo $sid;
 //$sid=$_POST['sid'];
 $address = $_POST['address'];
