@@ -1,4 +1,4 @@
-
+<center>
 <?php
 require_once ('db_inc.php');
 if (isset ( $_POST ['act'] )) {
@@ -39,6 +39,8 @@ if (isset ( $_POST ['act'] )) {
 		$sql = "INSERT INTO tb_user VALUES ('{$uid}','{$pass}',{$type},'{$uname}')";
 		mysql_query ( $sql, $conn );
 		echo '<h3>アカウントが追加されました</h3>';
+		echo '<a href="?do=p_top">戻る</a>';
 	}
 }
 ?>
+</center>

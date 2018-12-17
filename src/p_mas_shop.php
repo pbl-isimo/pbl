@@ -1,9 +1,11 @@
+<center>
+<div class="container">
 <?php
   require_once ('src/db_inc.php');
   $sql="SELECT sname, sid FROM tb_shop;";
   $rs = mysql_query ( $sql, $conn );
   echo '<h1>店舗情報一覧</h1>';
-  echo '<table border="1">';
+  echo '<table class="table table-bordered">';
   echo '<tr>';
   echo '<th>店舗名</th>';
   echo '<th></th>';
@@ -48,3 +50,5 @@
   }
   echo '</table>';
 ?>
+</div>
+</center>

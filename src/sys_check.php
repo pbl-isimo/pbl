@@ -21,7 +21,6 @@
   $rs = mysql_query($sql, $conn);
   if (!$rs) die('エラー: ' . mysql_error());
   $row= mysql_fetch_array($rs);
-  var_dump($row);
 
   if ($row){ //ログイン成功
   	//echo "ログイン成功";

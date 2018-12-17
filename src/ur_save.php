@@ -1,3 +1,4 @@
+<center>
 <?php
 require_once ('db_inc.php');
 
@@ -50,3 +51,4 @@ if ($people >= 1) {
 }
 
 ?>
+</center>

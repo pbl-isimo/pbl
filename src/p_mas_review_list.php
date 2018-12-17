@@ -1,9 +1,11 @@
+<center>
+<div class="container">
 <?php
 require_once ('db_inc.php');
 $sid = $_POST['id'];
 $sql="SELECT * FROM tb_review WHERE sid = '{$sid}'";
 $rs = mysql_query ( $sql, $conn );
-echo '<table border="1">';
+  echo '<table class="table table-bordered">';
   echo '<tr>';
   echo '<th>ユーザ名</th>';
   echo '<th>コメント</th>';
@@ -27,3 +29,5 @@ echo '<table border="1">';
     echo '</tr>';
   }
 ?>
+</div>
+</center>

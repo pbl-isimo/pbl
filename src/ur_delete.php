@@ -1,3 +1,4 @@
+<center>
 <?php
   echo '<head>
   <meta charset="utf-8"/>
@@ -13,3 +14,4 @@
     echo "<h1>".$id."のデータ削除に成功しました。<br> 3秒後戻ります。</h1>";
   }
 ?>
+</center>

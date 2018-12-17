@@ -21,9 +21,9 @@ if (! empty ( $row )) {
 	for($j = 1; $j <= $num; $j ++) {
 		$row = mysql_fetch_array ( $rs );
 		//echo $row['mid'];
-	 echo '<tr><td><input type="text" name="name'.$row['mid'].'"  size="10" maxlength="10" value="' . $row ['item'] . '">
-	 </td><td><input type="text" name="price'.$row['mid'].'" size="10" maxlength="10" value="' . $row ['price'] . '">円
-	 </td><td><textarea name="contents'.$row['mid'].'" rows="1" cols="40">' . $row ['mcontents'] . '</textarea></td></tr><br>';
+	 echo '<tr><td><div class="text-center"><input type="text" name="name'.$row['mid'].'"  size="10" maxlength="10" value="' . $row ['item'] . '">
+	 </div></td><td><div class="text-center"><input type="text" name="price'.$row['mid'].'" size="10" maxlength="10" value="' . $row ['price'] . '">円
+	 </div></td><td><div class="text-center"><textarea name="contents'.$row['mid'].'" rows="1" cols="60">' . $row ['mcontents'] . '</textarea></div></td></tr><br>';
 	 if($mid_max<$row['mid']){
 	 	$mid_max=$row['mid'];
 	 }
