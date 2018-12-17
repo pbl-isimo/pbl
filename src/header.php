@@ -15,8 +15,8 @@
     <![endif]-->
   </head>
   <body>
-  <a href="p_index.php"> <img src="img/pitarogo.png" width="300"
-			height="200"></a>
+  <a href="p_index.php"> <img src="img/pitarogo.png" width="200"
+			height="150"></a>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
