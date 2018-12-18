@@ -39,11 +39,11 @@ for($i = 0; $i < 5; $i ++) {
 // 各種ボタン
 '</h3>';
 if ($uid_kind == 0 || $uid_kind == 1) {
-	//if ($uid_kind == 0 || $s_uid == $uid) {
+	if ($uid_kind == 0 || $s_uid == $uid) {
 		echo '<form action="?do=p_shop_edit&sname=' . $sname . '" method="post">';
 		echo '<input type="submit" onclick="location.href="p_shop_edit&sname=' . $sname . '" " value="店舗編集" / class="btn btn-info btn-sm">';
 		echo '</form>';
-		if ($uid_kind == 0 || $s_uid == $uid) {
+
 		echo '<form action="?do=p_shop_delete&sname=' . $sname . '" method="post">';
 		echo '<input type="submit" onclick="location.href="p_shop_delete&sname=' . $sname . '" " value="店舗削除" / class="btn btn-danger btn-sm">';
 		echo '</form>';
