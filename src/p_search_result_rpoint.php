@@ -165,7 +165,9 @@ echo '</form>';
 
 <?php
 $sql = "
-			SELECT * FROM tb_shop Natural Left Join tb_review ORDER BY rpoint DESC
+			SELECT * FROM tb_shop
+		left join tb_review on tb_shop.sid=tb_review.sid
+		GROUP BY tb_shop.sid ORDER BY AVG(rpoint) DESC
 
 			"; // sidは他の選択も出来るように
 $rs = mysql_query ( $sql, $conn );
