@@ -25,13 +25,12 @@ require_once ('src/db_inc.php');
 
 <tr><td>コメント</td><td><textarea name="kanso" rows="10" cols="100" maxlength="500"></textarea></td></tr><br>
 
-<!--
 <small>
-<tr><td><br>写真1</td><td><input type="file" name="upfile" size="30"/></td></tr>
+<tr><td><br>写真1</td><td><input type="file" name="upfile1" size="30"/></td></tr>
 <tr><td><br>写真2</td><td><input type="file" name="upfile2" size="30"/></td></tr>
 <tr><td><br>写真3</td><td><input type="file" name="upfile3" size="30"/></td></tr>
 </small>
--->
+
 </table>
 
 

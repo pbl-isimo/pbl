@@ -6,9 +6,11 @@ require_once ('db_inc.php');
 $sid = $_SESSION['sid'];
 $rid = $_GET['rid'];
 
-$sql = "SELECT uname,rpoint,comment
-From tb_review natural join tb_user
-WHERE rid='$rid'";
+$sql = "SELECT uname,rpoint,comment,rid
+		From tb_review left join tb_user
+		on tb_review.uid=tb_user.uid
+		where rid='$rid'
+		";
 
 $rs = mysql_query ( $sql );
 $row = mysql_fetch_array ( $rs );
@@ -32,11 +34,26 @@ while ( $row ) {
 	echo '</tr>';
 	$row = mysql_fetch_array($rs);
 }
-// echo '<br>'.$row['rpoint'];
-	echo '</table>';
-	echo '</center>';
-echo '<br>';
+$pic=$sid.'_'.$rid;
+//ファイルをアップロードするループ
+for($i=1;$i<4;$i++){
+	//ファイルを探す
+	$filedir = "C:/eclipse-php/xampp/htdocs/PBL/img/" . $pic . "_".$i.".jpg";
+	// echo $filedir;
+	// $pic=$_FILES["upfile"]["name"];
 
+	// echo '<br>'.$row['rpoint'];
+	echo '</table>';
+	// $pic=$sid.$rid;
+	//echo $pic . '<br>';
+	//echo $filedir;
+	if (file_exists ( $filedir )) {
+		//echo $pic;
+		echo '<img src="img/' . $pic . "_".$i.'.jpg" alt="写真１">';
+	}
+	echo '<br>';
+}
+echo '</center>';
 ?>
 </div>
 </center>

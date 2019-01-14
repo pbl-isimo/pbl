@@ -1,7 +1,7 @@
 <html>
 <div class="container">
-<center>
-<form action="?do=p_review_detail" method="post">
+	<center>
+		<form action="?do=p_review_detail" method="post">
 <?php
 require_once ('src/db_inc.php');
 $conn = mysql_connect ( "localhost", "root", "" ); // 開発環境
@@ -48,11 +48,52 @@ if (! $conn) {
 }
 
 //<p>
-		 echo'<a href="?do=p_review_detail&rid='.$rid.'">戻る</a>';
+		 echo'<a href="?do=p_review_detail&rid='.$rid.'">戻る</a><br>';
 //	</p>
+//echo '<h3>画像を拾いたい</h3>';
+//var_dump($upfile);
+
+//$filesdirで指定したファイルに画像を保存する。
+//$filedir = "C:\Users\User\Documents\PBL\\";
+$filedir = "C:/eclipse-php/xampp/htdocs/PBL/img/";
+
+for($i = 1; $i < 4; $i ++) {
+	// $upfile = $_FILES['upfile'.$i];
+	if (is_uploaded_file ( $_FILES ["upfile" . $i] ["tmp_name"] )) {
+		$ext = substr ( $_FILES ["upfile" . $i] ["name"], strrpos ( $_FILES ["upfile" . $i] ["name"], '.' ) + 1 );
+		if($ext=='jpg'||$ext=='png'||$ext=='bmp'||$ext=='gif'||$ext=='JPG'){ //拡張子がpng、jpg、bmp、gif以外ははじく
+
+
+			//$extがpngだったらjpgに変換したい(勝手に拡張子うまくいった,bmp,gifも解決した)
+
+			if (move_uploaded_file ( $_FILES ["upfile".$i] ["tmp_name"], $filedir . $sid . '_' . $rid .'_'.$i. '.' . "jpg" )) {
+				$ext = substr ( $_FILES ["upfile".$i] ["name"], strrpos ( $_FILES ["upfile".$i] ["name"], '.' ) + 1 );
+				echo $_FILES ["upfile".$i] ["name"] . "をアップロードしました。" . '<br>';
+				/*
+				echo "sid" . $sid . '<br>';
+				echo "rid" . $rid . '<br>';
+				echo "拡張子" . $ext . '<br>';*/
+				// var_dump($_FILES);
+				// echo $filedir . $sid . '_' . $rid .'_'.$i. '.' . $ext;
+			}
+		}else {
+				echo "拡張子'$ext'は対応してません。". '<br>';
+		}
+	} else {
+		//echo '<br>' . "ファイルが選択されていません。";
+	}
+}
+/*
+$sid.'_'.$rid=$_FILES["upfile"]["name"];
+$pic=$sid.'_'.$rid;
+echo '<br>sid:'.$sid.'<br>rid:'.$rid;
+echo '<br>'.__FILE__, "<br>";
+echo '<img src="img/'.$_FILES["upfile"]["name"].'" alt="写真１">';
+//echo '<input type="hidden" name="pic" value="'.$pic.'">';
+echo '<img src="img/img1.jpg" alt="寿司の写真１">';*/
 //	</body>
 ?>
 </form>
-</center>
+	</center>
 </div>
 </html>

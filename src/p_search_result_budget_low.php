@@ -7,11 +7,30 @@
 <?php
 require_once ('src/db_inc.php');
 // phpinfo();
+//ユーザテーブルからお勧めを取得
+$uid=$_SESSION['uid'];
+$sql_o1="SELECT `sid` FROM `tb_user`
+WHERE uid='$uid'";
+$rs_o1 = mysql_query ( $sql_o1, $conn );
+$row_o1 = mysql_fetch_array ( $rs_o1 );
 
-$sql2="SELECT * FROM tb_shop ORDER BY RAND() LIMIT 1";
+$sid=$row_o1['sid'];
+$sql2="SELECT * FROM tb_shop
+where sid='$sid'";
+
+//ランダムにお勧めを取得している
+/*
+ $sql2="SELECT * FROM tb_shop
+ ORDER BY RAND() LIMIT 1";*/
 $rs2 = mysql_query ( $sql2, $conn );
 // var_dump ( $rs);
 $row = mysql_fetch_array ( $rs2 );
+
+/*
+$sql2="SELECT * FROM tb_shop ORDER BY RAND() LIMIT 1";
+$rs2 = mysql_query ( $sql2, $conn );
+// var_dump ( $rs);
+$row = mysql_fetch_array ( $rs2 );*/
 
 while ($row){
 	echo '<table class="table table-bordered">';

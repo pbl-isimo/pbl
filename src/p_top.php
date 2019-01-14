@@ -11,6 +11,17 @@ if($_SESSION['login'] != 1 && $_SERVER['QUERY_STRING'] != "do?=sys_login"){
 }
 require_once ('src/db_inc.php');
 // phpinfo();
+$week = array(
+		'日', //0
+		'月', //1
+		'火', //2
+		'水', //3
+		'木', //4
+		'金', //5
+		'土', //6
+);
+$date=date('w');
+$w=$week[$date];
 $sql2="SELECT * FROM tb_shop ORDER BY RAND() LIMIT 1";
 $rs2 = mysql_query ( $sql2, $conn );
 // var_dump ( $rs);
